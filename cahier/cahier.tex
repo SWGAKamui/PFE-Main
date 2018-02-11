@@ -24,12 +24,14 @@
 
 
 \textsc{\Large Projet de Fin d'Etude}\\[0.5cm]
+\textsc{\Large Master 2 Systèmes mobiles autonomes communicants}\\[0.5cm]
 
 \vspace{30pt}
 % Title
 \HRule \\[0.4cm]
-{ \huge \bfseries OpenRPAS
-\\Un simulateur ouvert
+{ \huge \bfseries Cahier des Charges \\[0.7cm]
+OpenRPAS \\[0.5cm]
+Un simulateur ouvert
 de système de drone}\\[0.4cm]
 
 \HRule \\[1.5cm]
@@ -48,7 +50,7 @@ Imane \textsc{Zerouali}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
-\textbf{Client :} \\
+\textbf{Responsable :} \\
 Serge \textsc{Chaumette}\\
 \end{flushright}
 \end{minipage}
@@ -63,12 +65,16 @@ Serge \textsc{Chaumette}\\
 \end{titlepage}
 
 %%% FIN Page de garge %%%
+\tableofcontents
+\newpage
+\section{Présentation du projet}
+L'objectif de ce projet est de développer une simulation de drone qui puisse communiquer par un bus avec une base au sol. La base au sol affiche toutes les données du drone, lui communique une position et une altitude à atteindre.
 
+\section{Analyse des besoins}
+\subsection{Besoins Fonctionnels }
 
-\textbf{Besoins Fonctionnels :}
-\newline
-\underline{Bus:}\\
-\newline
+\subsubsection{Bus}
+
 
 \begin{tabular}{|p{6cm}|p{5cm}|p{5cm}|}
 	\hline
@@ -78,8 +84,8 @@ Serge \textsc{Chaumette}\\
     \hline	
 \end{tabular}\\
 
-\underline{Simulation}
-\newline
+
+\subsubsection{Simulation du drone}
 
 
 \begin{tabular}{|p{6cm}|p{5cm}|p{5cm}|}
@@ -98,8 +104,8 @@ Serge \textsc{Chaumette}\\
 \end{tabular}\\
 	
 
-\underline{BaseStation}
-\newline
+\subsubsection{BaseStation}
+
 
 
 \begin{tabular}{|p{6cm}|p{5cm}|p{5cm}|}
@@ -114,9 +120,7 @@ Serge \textsc{Chaumette}\\
     \hline
 \end{tabular}\\
 
-\newpage
-\textbf{Besoins non Fonctionnelles :}\\
-\newline
+\subsection{Besoins non Fonctionnels}
 
 \begin{tabular}{|p{7cm}|p{5cm}|p{4cm}|}
 	\hline
@@ -126,7 +130,7 @@ Serge \textsc{Chaumette}\\
     \hline
 \end{tabular}\\
 
-\textbf{Contraintes :}\\
+\subsection{Contraintes}
 
 
 \begin{tabular}{|p{7cm}|p{5cm}|p{4cm}|}
