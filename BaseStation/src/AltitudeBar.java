@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class AltitudeBar {
     private int swidth, sheight;    // width and height of bar
     private float xpos, ypos;       // x and y position of bar

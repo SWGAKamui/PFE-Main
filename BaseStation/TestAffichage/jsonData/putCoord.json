@@ -1,0 +1,10 @@
+{
+  "action": "PUT",
+  "content": {
+    "type": "coordonnees",
+    "value": {
+      "x": 10,
+      "y": 42
+    }
+  }
+}

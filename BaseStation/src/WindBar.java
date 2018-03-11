@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class WindBar {
     private int swidth, sheight;    // width and height of bar
     private float xpos, ypos;       // x and y position of bar
@@ -20,7 +22,8 @@ public class WindBar {
         sposMax = swidth;
         loose = 16;
     }
-    public void setup(int x, int y){
+
+    public void setup(int x, int y) {
         xpos = x;
         ypos = y;
     }
@@ -30,12 +33,12 @@ public class WindBar {
         parent.stroke(255);
         parent.textSize(20);
         parent.fill(255);
-        parent.text("Wind", -(xpos+130), ypos -60);
+        parent.text("Wind", -(xpos + 130), ypos - 60);
         parent.textSize(15);
         for (int i = 1; i < 11; i++) {
             parent.fill(255);
-            parent.text((i - 1) * 10 + "%", (sposMax / 10) * i - swidth / 2 - 10 + xpos/2, ypos - 30);
-            parent.line((sposMax / 10) * i - swidth / 2 + xpos/2, ypos - 20, (sposMax / 10) * i - swidth / 2 + xpos/2, ypos - 10);
+            parent.text((i - 1) * 10 + "%", (sposMax / 10) * i - swidth / 2 - 10 + xpos / 2, ypos - 30);
+            parent.line((sposMax / 10) * i - swidth / 2 + xpos / 2, ypos - 20, (sposMax / 10) * i - swidth / 2 + xpos / 2, ypos - 10);
         }
         parent.fill(0);
         update();
@@ -44,7 +47,7 @@ public class WindBar {
 
     public void update() {
         over = parent.mouseX > xpos && parent.mouseX < xpos + swidth &&
-                parent.mouseY > ypos +30  && parent.mouseY < ypos + sheight +30;
+                parent.mouseY > ypos + 30 && parent.mouseY < ypos + sheight + 30;
         if (parent.mousePressed && over)
             locked = true;
         if (!parent.mousePressed)

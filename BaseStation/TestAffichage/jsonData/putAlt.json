@@ -1,0 +1,7 @@
+{
+  "action": "PUT",
+  "content": {
+    "type": "altitude",
+    "value": 50
+  }
+}

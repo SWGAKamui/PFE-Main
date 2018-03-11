@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class Box {
     private PApplet parent;
     int xOrder, yOrder, xData, yData, xPos, yPos;

@@ -1,11 +1,11 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class TestAffichage extends PApplet {
-    private TestFct test = new TestFct(this);
     private AltitudeGauge altGauge = new AltitudeGauge(this);
     private LineHorizon lineHorizon = new LineHorizon(this);
     private SpeedGauge speedGauge = new SpeedGauge(this);
-    public BaseStation base = new BaseStation();
     private WindBar windBar = new WindBar(this);
     private AltitudeBar altitudeBar = new AltitudeBar(this);
     private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
@@ -16,6 +16,7 @@ public class TestAffichage extends PApplet {
 
     private GoogleMap googleMap = new GoogleMap(this);
 
+
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
     }
@@ -25,8 +26,6 @@ public class TestAffichage extends PApplet {
     }
 
     public void setup() {
-        test.testMain(altGauge, lineHorizon, speedGauge, base);
-        //background(0);
         rectMode(CENTER);
         smooth();
 
@@ -44,13 +43,12 @@ public class TestAffichage extends PApplet {
 
         box.setup(width / 6 + 10, height - height / 3,
                 width / 6 + 10, 50,
-                width- width/10, 200);
+                width - width / 10, 200);
 
     }
 
     public void draw() {
         background(0);
-        test.draw();
         scale((float) 0.5);
         lineHorizon.draw();
         scale((float) 1.35);

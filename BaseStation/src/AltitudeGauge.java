@@ -1,7 +1,9 @@
 import processing.core.*;
 
 import static processing.core.PApplet.radians;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class AltitudeGauge {
     private float alt;
     private PApplet parent;

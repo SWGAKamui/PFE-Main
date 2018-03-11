@@ -1,5 +1,7 @@
-import processing.core.*;
-
+import processing.core.PApplet;
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class SpeedGauge {
     private float speed;
     private PApplet parent;
@@ -37,7 +39,7 @@ public class SpeedGauge {
             parent.line(r1 * parent.cos(a), r1 * parent.sin(a), r2 * parent.cos(a), r2 * parent.sin(a));
             a = parent.radians(180 + i * 170 / max);
             if (i % 20 == 0 || i == 0) {
-                parent.text(String.valueOf(i)+" %", r2 * parent.cos(a), r2 * parent.sin(a) - 80);
+                parent.text(String.valueOf(i) + " %", r2 * parent.cos(a), r2 * parent.sin(a) - 80);
                 parent.fill(255, 255, 255);
             }
 

@@ -1,0 +1,6 @@
+{
+  "action": "GET",
+  "content": {
+    "type": "altitude"
+  }
+}

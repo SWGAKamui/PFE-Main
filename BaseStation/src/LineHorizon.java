@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class LineHorizon {
     private float pitch;
     private float roll;
@@ -143,11 +145,11 @@ public class LineHorizon {
         this.pitch = pitch;
     }
 
-    public void setYaw(float yaw) {
-        this.yaw = yaw;
-    }
-
     public float getYaw() {
         return yaw;
+    }
+
+    public void setYaw(float yaw) {
+        this.yaw = yaw;
     }
 }

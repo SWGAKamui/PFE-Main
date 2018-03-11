@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class EditTextXData {
     PApplet parent;
     private int xpos;

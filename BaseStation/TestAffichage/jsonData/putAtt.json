@@ -1,0 +1,11 @@
+{
+    "action": "PUT",
+    "content": {
+        "type": "attitude",
+        "value": {
+            "yaw": 10,
+            "pitch": 42,
+            "roll": 42
+        }
+    }
+}
