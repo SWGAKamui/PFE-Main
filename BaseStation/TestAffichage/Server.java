@@ -10,15 +10,15 @@ import java.net.Socket;
  * Classe écrite par Kinda AL CHAHID
  */
 public class Server {
-    static ParseJsonFormat jsonFormat = new ParseJsonFormat();
-    static Data data = new Data();
+    private static ParseJsonFormat jsonFormat = new ParseJsonFormat();
+    private static Data data = new Data();
 
     public static void main(String[] args) {
         JSONObject object = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
         serverTest(object);
     }
 
-    public static void jsonTest(JSONObject object) {
+    private static void jsonTest(JSONObject object) {
         jsonFormat.setData(object, data);
         JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAlt.json");
         jsonFormat.setData(jsonObject, data);
@@ -29,7 +29,7 @@ public class Server {
         System.out.println("Test ypr  && SERVER    =======> " + (data.getYpr()[0] == 10 && data.getYpr()[1] == 42 && data.getYpr()[2] == 42 ? "Réussi" : "Raté"));
     }
 
-    public static void serverTest(JSONObject jsonobject) {
+    private static void serverTest(JSONObject jsonobject) {
         String dataString = jsonobject.toString();
         try {
             ServerSocket serverSocket = new ServerSocket(5555);
