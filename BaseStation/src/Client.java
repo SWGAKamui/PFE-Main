@@ -1,3 +1,5 @@
+import DataCollect.Data;
+import DataCollect.ParseJsonFormat;
 import processing.data.JSONObject;
 
 import java.io.DataInputStream;
@@ -9,15 +11,18 @@ import java.net.Socket;
  */
 public class Client implements Runnable{
     static ParseJsonFormat jsonFormat = new ParseJsonFormat();
-    Data data;
+    Data dataReceived, dataOrder;
 
-    public Client(Data data){
-        this.data = data;
+
+    public Client(Data dataReceived, Data dataorder){
+        this.dataReceived = dataReceived;
+        this.dataOrder = dataorder;
     }
     public void run() {
-        this.data = data;
         Socket socket = null;
-        JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
+        JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putCoord.json");
+       // JSONObject jsonObject = new JSONObject();
+        //jsonObject.setString("")
         String dataJSON = jsonObject.toString();
 
         try {

@@ -1,3 +1,14 @@
+import DataCollect.Data;
+import EditText.EditTextReceived;
+import EditText.EditTextXOrder;
+import EditText.EditTextYOrder;
+import Gauge.AltitudeGauge;
+import Gauge.SpeedGauge;
+import OtherVisual.GoogleMap;
+import OtherVisual.LineHorizon;
+import OtherVisual.Box;
+import ScrollBar.AltitudeBar;
+import ScrollBar.WindBar;
 import processing.core.PApplet;
 /**
  * Classe écrite par Kinda AL CHAHID
@@ -11,17 +22,18 @@ public class TestAffichage extends PApplet {
     private AltitudeBar altitudeBar = new AltitudeBar(this);
     private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
-    private EditTextXData editTextXData = new EditTextXData(this);
-    private EditTextYData editTextYData = new EditTextYData(this);
+    private EditTextReceived editTextReceived = new EditTextReceived(this);
+
     private Box box = new Box(this);
-    private static volatile Data data = new Data();
+    private static volatile Data dataReceived = new Data();
+    private static volatile Data dataorder = new Data();
     static Thread client;
     private GoogleMap googleMap = new GoogleMap(this);
 
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
-        client = new Thread(new Client(data));
+        client = new Thread(new Client(dataReceived, dataorder));
         client.start();
     }
 
@@ -43,8 +55,8 @@ public class TestAffichage extends PApplet {
         editTextXOrder.setup(width / 5 + width / 10, height - height / 3);
         editTextYOrder.setup(width / 5 + width / 6, height - height / 3);
 
-        editTextXData.setup(width / 15 - 100, height / 3 + 70);
-        editTextYData.setup(width / 15, height / 3 + 70);
+        editTextReceived.setup(width / 15, height / 3 + 70);
+
 
         box.setup(width / 6 + 10, height - height / 3,
                 width / 6 + 10, 50,
@@ -52,6 +64,9 @@ public class TestAffichage extends PApplet {
     }
 
     public void draw() {
+        update();
+
+
         testFct.draw();
         background(0);
         scale((float) 0.5);
@@ -65,19 +80,22 @@ public class TestAffichage extends PApplet {
         altitudeBar.draw();
         editTextXOrder.draw();
         editTextYOrder.draw();
-        editTextXData.draw();
-        editTextYData.draw();
+        editTextReceived.draw();
         box.draw();
+
+
 
 
         googleMap.draw();
     }
 
+
+    public void update(){
+        editTextReceived.setXY(dataReceived.getCoord());
+    }
     public void keyReleased() {
         editTextXOrder.keyReleased();
         editTextYOrder.keyReleased();
 
-        editTextXData.keyReleased();
-        editTextYData.keyReleased();
     }
 }

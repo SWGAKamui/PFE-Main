@@ -1,3 +1,5 @@
+import DataCollect.Data;
+import DataCollect.ParseJsonFormat;
 import processing.data.JSONObject;
 
 import java.io.DataInputStream;
@@ -20,7 +22,7 @@ public class Server {
         jsonFormat.setData(object, data);
         JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAlt.json");
         jsonFormat.setData(jsonObject, data);
-        jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putCoord.json");
+        jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
         jsonFormat.setData(jsonObject, data);
         System.out.println("Test Alt             =======> " + (data.getAltitude() == 50 ? "Réussi" : "Raté"));
         System.out.println("Test XY              =======> " + (data.getCoord()[0] == 10 && data.getCoord()[1] == 42 ? "Réussi" : "Raté"));

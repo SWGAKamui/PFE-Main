@@ -1,3 +1,13 @@
+import EditText.EditTextReceived;
+import EditText.EditTextXOrder;
+import EditText.EditTextYOrder;
+import Gauge.AltitudeGauge;
+import Gauge.SpeedGauge;
+import OtherVisual.GoogleMap;
+import OtherVisual.LineHorizon;
+import OtherVisual.Box;
+import ScrollBar.AltitudeBar;
+import ScrollBar.WindBar;
 import processing.core.PApplet;
 /**
  * Classe écrite par Kinda AL CHAHID
@@ -10,8 +20,7 @@ public class Main extends PApplet {
     private AltitudeBar altitudeBar = new AltitudeBar(this);
     private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
-    private EditTextXData editTextXData = new EditTextXData(this);
-    private EditTextYData editTextYData = new EditTextYData(this);
+    private EditTextReceived editTextReceived= new EditTextReceived(this);
     private Box box = new Box(this);
 
     private GoogleMap googleMap = new GoogleMap(this);
@@ -38,8 +47,8 @@ public class Main extends PApplet {
         editTextXOrder.setup(width / 5 + width / 10, height - height / 3);
         editTextYOrder.setup(width / 5 + width / 6, height - height / 3);
 
-        editTextXData.setup(width / 15 - 100, height / 3 + 70);
-        editTextYData.setup(width / 15, height / 3 + 70);
+        editTextReceived.setup(width / 15 - 100, height / 3 + 70);
+
 
         box.setup(width / 6 + 10, height - height / 3,
                 width / 6 + 10, 50,
@@ -60,8 +69,7 @@ public class Main extends PApplet {
         altitudeBar.draw();
         editTextXOrder.draw();
         editTextYOrder.draw();
-        editTextXData.draw();
-        editTextYData.draw();
+        editTextReceived.draw();
         box.draw();
 
 
@@ -71,8 +79,5 @@ public class Main extends PApplet {
     public void keyReleased() {
         editTextXOrder.keyReleased();
         editTextYOrder.keyReleased();
-
-        editTextXData.keyReleased();
-        editTextYData.keyReleased();
     }
 }

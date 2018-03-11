@@ -1,3 +1,6 @@
+import Gauge.AltitudeGauge;
+import Gauge.SpeedGauge;
+import OtherVisual.LineHorizon;
 import processing.core.PApplet;
 import processing.core.PVector;
 
