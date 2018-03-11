@@ -3,6 +3,7 @@ import processing.core.PApplet;
  * Classe écrite par Kinda AL CHAHID
  */
 public class TestAffichage extends PApplet {
+    private TestFct testFct = new TestFct(this);
     private AltitudeGauge altGauge = new AltitudeGauge(this);
     private LineHorizon lineHorizon = new LineHorizon(this);
     private SpeedGauge speedGauge = new SpeedGauge(this);
@@ -13,12 +14,15 @@ public class TestAffichage extends PApplet {
     private EditTextXData editTextXData = new EditTextXData(this);
     private EditTextYData editTextYData = new EditTextYData(this);
     private Box box = new Box(this);
-
+    private static volatile Data data = new Data();
+    static Thread client;
     private GoogleMap googleMap = new GoogleMap(this);
 
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
+        client = new Thread(new Client(data));
+        client.start();
     }
 
     public void settings() {
@@ -26,6 +30,7 @@ public class TestAffichage extends PApplet {
     }
 
     public void setup() {
+        testFct.testMain(altGauge,lineHorizon,speedGauge);
         rectMode(CENTER);
         smooth();
 
@@ -44,10 +49,10 @@ public class TestAffichage extends PApplet {
         box.setup(width / 6 + 10, height - height / 3,
                 width / 6 + 10, 50,
                 width - width / 10, 200);
-
     }
 
     public void draw() {
+        testFct.draw();
         background(0);
         scale((float) 0.5);
         lineHorizon.draw();

@@ -7,11 +7,15 @@ import java.net.Socket;
 /**
  * Classe écrite par Kinda AL CHAHID
  */
-public class Client {
+public class Client implements Runnable{
     static ParseJsonFormat jsonFormat = new ParseJsonFormat();
-    //static Data data = new Data();
+    Data data;
 
-    public static void main(String[] args) {
+    public Client(Data data){
+        this.data = data;
+    }
+    public void run() {
+        this.data = data;
         Socket socket = null;
         JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
         String dataJSON = jsonObject.toString();
@@ -33,6 +37,7 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 }

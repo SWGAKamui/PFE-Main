@@ -28,11 +28,9 @@ public class Server {
     }
 
     public static void serverTest(JSONObject jsonobject) {
-        String data = jsonobject.toString();
+        String dataString = jsonobject.toString();
         try {
             ServerSocket serverSocket = new ServerSocket(5555);
-
-            String dataSend = data;
             String msgIn = "";
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -44,7 +42,7 @@ public class Server {
                     JSONObject newObject = JSONObject.parse(msgIn);
                     jsonTest(newObject);
 
-                    dataOut.writeUTF(dataSend);
+                    dataOut.writeUTF(dataString);
                     msgIn = dataIn.readUTF();
                 }
 
