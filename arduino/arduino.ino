@@ -4,8 +4,6 @@
 
 MPU6050 mpu;
 
-bool blinkState = false;
-
 // ultrasons variables
 long duration;
 int distance;
@@ -21,7 +19,6 @@ VectorFloat gravity;    // [x, y, z]            gravity vector
 float ypr[3];           // [yaw, pitch, roll]   yaw/pitch/roll container
 
 // defines pins numbers
-const int ledPin = 13;
 const int trigPin = 3;
 const int echoPin = 2;
 const int btnPin = 6;
@@ -30,7 +27,7 @@ void setup() {
     Wire.begin();
     Wire.setClock(400000);
 
-    Serial.begin(115200);
+    Serial.begin(9600);
     while (!Serial);
 
     // initialize device
@@ -59,7 +56,6 @@ void setup() {
     packetSize = mpu.dmpGetFIFOPacketSize();
 
     // configure LED for output
-    pinMode(ledPin, OUTPUT);
     pinMode(trigPin, OUTPUT);
     pinMode(echoPin, INPUT);
     pinMode(btnPin, INPUT_PULLUP); // emulate the proximity sensor
@@ -116,12 +112,5 @@ void loop() {
     Serial.print(ypr[1] * 180/M_PI);
     Serial.print(",");
     Serial.println(ypr[2] * 180/M_PI);
-
-
-    // --- state led ---
-
-    // blink LED to indicate activity
-    blinkState = !blinkState;
-    digitalWrite(ledPin, blinkState);
 }
 
