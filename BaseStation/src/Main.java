@@ -9,10 +9,14 @@ import OtherVisual.Box;
 import ScrollBar.AltitudeBar;
 import ScrollBar.WindBar;
 import processing.core.PApplet;
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */
 public class Main extends PApplet {
+    static Thread client;
+    private static volatile Data dataReceived = new Data();
+    private static volatile Data dataorder = new Data();
     private AltitudeGauge altGauge = new AltitudeGauge(this);
     private LineHorizon lineHorizon = new LineHorizon(this);
     private SpeedGauge speedGauge = new SpeedGauge(this);
@@ -21,12 +25,7 @@ public class Main extends PApplet {
     private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
-
     private Box box = new Box(this);
-    private static volatile Data dataReceived = new Data();
-    private static volatile Data dataorder = new Data();
-    static Thread client;
-
 
     public static void main(String[] args) {
         PApplet.main("Main");
@@ -79,17 +78,19 @@ public class Main extends PApplet {
     }
 
 
-    public void update(){
+    public void update() {
         dataorder.setCoord(new int[]{editTextXOrder.getX(), editTextYOrder.getY()});
         //dataorder.set(windBar.getPos());
         altGauge.setAlt(dataReceived.getAltitude() * 10 - 50);
         editTextReceived.setXY(dataReceived.getCoord());
-        if(editTextXOrder.enter && editTextYOrder.enter){
+        if (editTextXOrder.enter && editTextYOrder.enter) {
+            editTextYOrder.enter = false;
+            editTextXOrder.enter = false;
             client = new Thread(new Client(dataReceived, dataorder, "PUTCOORD"));
             client.start();
             client.interrupt();
         }
-        if(dataorder.getAltitude() != altitudeBar.getPos() && altitudeBar.mouse) {
+        if (dataorder.getAltitude() != altitudeBar.getPos() && altitudeBar.mouse) {
             altitudeBar.mouse = false;
             dataorder.setAltitude(altitudeBar.getPos());
             client = new Thread(new Client(dataReceived, dataorder, "PUTALT"));
@@ -97,11 +98,13 @@ public class Main extends PApplet {
             client.interrupt();
         }
     }
+
     public void keyReleased() {
         editTextXOrder.keyReleased();
         editTextYOrder.keyReleased();
     }
-    public void mouseReleased(){
+
+    public void mouseReleased() {
         altitudeBar.mouseReleased();
 
     }

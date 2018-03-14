@@ -43,7 +43,6 @@ public class Client implements Runnable, DataPath {
             msgIn = dataIn.readUTF();
             jsonFormat.setData(jsonFormat.getJson(msgIn), dataReceived);
             socket.close();
-            Thread.currentThread().interrupt();
         } catch (IOException e) {
             e.printStackTrace();
         }
