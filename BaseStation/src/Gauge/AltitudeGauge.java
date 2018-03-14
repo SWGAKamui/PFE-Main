@@ -10,9 +10,9 @@ public class AltitudeGauge extends Gauge {
     private PApplet parent;
     private int x;
     private int y;
-    private int max = 30;
+    private int max = 35;
     private int step = 5;
-    private double stepNumber = 5.67;
+    private int stepNumber = 5;
 
 
     public AltitudeGauge(PApplet p) {
@@ -32,7 +32,11 @@ public class AltitudeGauge extends Gauge {
         parent.popMatrix();
     }
 
-    public void setAlt(float alt) {
-        this.alt = alt;
+    public void setAlt(float altitude) {
+        if (altitude > 170)
+            this.alt = 170;
+        else if (altitude < 0)
+            this.alt = 0;
+        this.alt = altitude;
     }
 }

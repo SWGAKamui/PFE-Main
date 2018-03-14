@@ -14,8 +14,8 @@ public class AltitudeBar extends ScrollBarProcessing {
     private boolean over;           // is the mouse over the slider?
     private boolean locked;
     private PApplet parent;
-    private int max = 7;
-    private int step = 15;
+    private int max = 6;
+    private int step = 20;
 
     public AltitudeBar(PApplet p) {
         super(p);
