@@ -3,14 +3,15 @@ package DataCollect;
 /**
  * Classe écrite par Kinda AL CHAHID
  */
-public class Data {
+public class Data implements DataPath {
     public int altitude;
     public int[] ypr = new int[3];
     public int[] coord = new int[2];
-    public Data(){
+
+    public Data() {
         altitude = 0;
-        ypr = new int[]{0,0,0};
-        coord = new int[]{0,0};
+        ypr = new int[]{0, 0, 0};
+        coord = new int[]{0, 0};
     }
 
     public int getAltitude() {
@@ -25,15 +26,22 @@ public class Data {
         return coord;
     }
 
-    public int[] getYpr() {
-        return ypr;
-    }
-
     public void setCoord(int[] coord) {
         this.coord = coord;
     }
 
+    public int[] getYpr() {
+        return ypr;
+    }
+
     public void setYpr(int[] ypr) {
         this.ypr = ypr;
+    }
+
+    public String getJsonDataAlt() {
+        return getAltJsonBegin + altitude + getAltJsonEnd;
+    }
+    public String getJsonDataCoord() {
+        return getCoordJsonBegin + coord[0] + getCoordJsonY+coord[1]+getCoordJsonEnd;
     }
 }

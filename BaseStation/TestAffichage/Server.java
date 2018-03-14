@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */
@@ -14,42 +15,46 @@ public class Server {
     private static Data data = new Data();
 
     public static void main(String[] args) {
-        JSONObject object = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
-        serverTest(object);
+        jsonTest();
+
+        serverTest();
     }
 
-    private static void jsonTest(JSONObject object) {
-        jsonFormat.setData(object, data);
+    private static void jsonTest() {
         JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAlt.json");
         jsonFormat.setData(jsonObject, data);
-        jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
-        jsonFormat.setData(jsonObject, data);
         System.out.println("Test Alt             =======> " + (data.getAltitude() == 50 ? "Réussi" : "Raté"));
+        jsonFormat.setData(jsonObject, data);
+        jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAtt.json");
+        System.out.println("Test ypr             =======> " + (data.getYpr()[0] == 10 && data.getYpr()[1] == 42 && data.getYpr()[2] == 42 ? "Réussi" : "Raté"));
+        jsonFormat.setData(jsonObject, data);
+        jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putCoord.json");
+        jsonFormat.setData(jsonObject, data);
         System.out.println("Test XY              =======> " + (data.getCoord()[0] == 10 && data.getCoord()[1] == 42 ? "Réussi" : "Raté"));
-        System.out.println("Test ypr  && SERVER    =======> " + (data.getYpr()[0] == 10 && data.getYpr()[1] == 42 && data.getYpr()[2] == 42 ? "Réussi" : "Raté"));
     }
 
-    private static void serverTest(JSONObject jsonobject) {
-        String dataString = jsonobject.toString();
+    private static void serverTest() {
+        JSONObject object = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putAlt.json");
+        String dataString = object.toString();
         try {
-            ServerSocket serverSocket = new ServerSocket(5555);
-            String msgIn = "";
             while (true) {
+                ServerSocket serverSocket = new ServerSocket(5555);
+                String msgIn = "";
                 Socket socket = serverSocket.accept();
 
                 DataInputStream dataIn = new DataInputStream(socket.getInputStream());
                 DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream());
-                while (!msgIn.equals("exit")) {
-                    msgIn = dataIn.readUTF();
-                    JSONObject newObject = JSONObject.parse(msgIn);
-                    jsonTest(newObject);
-
+                msgIn = dataIn.readUTF();
+                String order = jsonFormat.detect(JSONObject.parse(msgIn));
+                if (order.equals("GET")) {
                     dataOut.writeUTF(dataString);
-                    msgIn = dataIn.readUTF();
+                    dataOut.flush();
+                } else {
+                    dataOut.writeUTF(msgIn);
+                    dataOut.flush();
                 }
-
+                serverSocket.close();
                 socket.close();
-                System.exit(0);
             }
         } catch (Exception e) {
 

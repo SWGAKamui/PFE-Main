@@ -12,12 +12,14 @@ public class WindBar extends ScrollBarProcessing {
     private boolean over;           // is the mouse over the slider?
     private boolean locked;
     private PApplet parent;
+    private int max = 10;
+    private int step = 0;
 
     public WindBar(PApplet p) {
         super(p);
         parent = p;
         newspos = spos;
-        loose = 16;
+        loose = max;
     }
 
     public void setup(int x, int y) {
@@ -27,7 +29,7 @@ public class WindBar extends ScrollBarProcessing {
 
 
     public void draw() {
-        draw(this.xpos, this.ypos, this.spos, this.over, this.locked, "Wind");
+        draw(this.xpos, this.ypos, this.spos, this.over, this.locked, "Wind", step, max);
         update();
     }
 
@@ -46,8 +48,10 @@ public class WindBar extends ScrollBarProcessing {
     }
 
 
-
-    public float getPos() {
-        return (spos / 30) * 10;
+    public int getPos() {
+        if (spos <= 0) {
+            return (int) (51 + (spos / 269 * 50));
+        }
+        return (int) (spos / 279 * 50) + 50;
     }
 }

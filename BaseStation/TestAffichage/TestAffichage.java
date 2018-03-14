@@ -4,7 +4,6 @@ import EditText.EditTextXOrder;
 import EditText.EditTextYOrder;
 import Gauge.AltitudeGauge;
 import Gauge.SpeedGauge;
-import OtherVisual.GoogleMap;
 import OtherVisual.LineHorizon;
 import OtherVisual.Box;
 import ScrollBar.AltitudeBar;
@@ -28,12 +27,11 @@ public class TestAffichage extends PApplet {
     private static volatile Data dataReceived = new Data();
     private static volatile Data dataorder = new Data();
     static Thread client;
-    private GoogleMap googleMap = new GoogleMap(this);
 
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
-        client = new Thread(new Client(dataReceived, dataorder));
+        client = new Thread(new Client(dataReceived, dataorder, "GET"));
         client.start();
     }
 
@@ -66,7 +64,6 @@ public class TestAffichage extends PApplet {
     public void draw() {
         update();
 
-
         testFct.draw();
         background(0);
         scale((float) 0.5);
@@ -82,11 +79,6 @@ public class TestAffichage extends PApplet {
         editTextYOrder.draw();
         editTextReceived.draw();
         box.draw();
-
-
-
-
-        googleMap.draw();
     }
 
 

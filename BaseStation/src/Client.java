@@ -1,4 +1,5 @@
 import DataCollect.Data;
+import DataCollect.DataPath;
 import DataCollect.ParseJsonFormat;
 import processing.data.JSONObject;
 
@@ -6,39 +7,43 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */
-public class Client implements Runnable{
+public class Client implements Runnable, DataPath {
     static ParseJsonFormat jsonFormat = new ParseJsonFormat();
+    JSONObject dataJSON;
     Data dataReceived, dataOrder;
 
 
-    public Client(Data dataReceived, Data dataorder){
+    public Client(Data dataReceived, Data dataorder, String order) {
         this.dataReceived = dataReceived;
         this.dataOrder = dataorder;
+        if (order.equals("GET"))
+            dataJSON = jsonFormat.getStringJson(getData);
+        if (order.equals("PUTALT"))
+            dataJSON = jsonFormat.getJson(dataOrder.getJsonDataAlt());
+        if (order.equals("PUTCOORD"))
+            dataJSON = jsonFormat.getJson(dataOrder.getJsonDataCoord());
     }
+
     public void run() {
         Socket socket = null;
-        JSONObject jsonObject = jsonFormat.getStringJson("BaseStation/TestAffichage/jsonData/putCoord.json");
-       // JSONObject jsonObject = new JSONObject();
-        //jsonObject.setString("")
-        String dataJSON = jsonObject.toString();
-
         try {
             socket = new Socket("127.0.0.1", 5555);
             String msgIn = "";
-            String msgOut = "";
 
             DataInputStream dataIn = new DataInputStream(socket.getInputStream());
             DataOutputStream dataOut = new DataOutputStream(socket.getOutputStream());
 
-            dataOut.writeUTF(dataJSON);
-//            msgIn = dataIn.readUTF();
-  //          dataOut.writeUTF(msgIn);
-
+            dataOut.writeUTF(dataJSON.toString());
+            dataOut.flush();
+            msgIn = dataIn.readUTF();
+            jsonFormat.setData(jsonFormat.getJson(msgIn), dataReceived);
             socket.close();
-
+            Thread.currentThread().interrupt();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -14,6 +14,7 @@ public class EditTextYOrder extends EditTextOrder {
     private boolean click = false;
     private int y = 0;
     private String numberXString = "";
+    public Boolean enter = false;
 
 
     public EditTextYOrder(PApplet p) {
@@ -29,8 +30,10 @@ public class EditTextYOrder extends EditTextOrder {
     public void draw() {
         update();
         super.display(click, over);
-        if (parent.mousePressed && over)
+        if (parent.mousePressed && over) {
             click = true;
+            enter = false;
+        }
         super.draw(xpos, ypos, "Y", y);
     }
     public void keyReleased() {
@@ -40,6 +43,7 @@ public class EditTextYOrder extends EditTextOrder {
         } else if (parent.key == parent.ENTER) {
             click = false;
             numberXString = "";
+            enter = true;
         }
     }
 

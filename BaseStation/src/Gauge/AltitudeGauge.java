@@ -14,6 +14,7 @@ public class AltitudeGauge extends Gauge {
     private int step = 5;
     private double stepNumber = 5.67;
 
+
     public AltitudeGauge(PApplet p) {
         super(p);
         parent = p;
@@ -27,6 +28,7 @@ public class AltitudeGauge extends Gauge {
     public void draw() {
         super.draw(x, y);
         drawGauge(PApplet.map(alt, 0, parent.width, 0, 1), max, step, stepNumber, "Altitude");
+
         parent.popMatrix();
     }
 
