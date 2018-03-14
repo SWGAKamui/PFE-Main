@@ -1,6 +1,7 @@
 package OtherVisual;
 
 import processing.core.PApplet;
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */

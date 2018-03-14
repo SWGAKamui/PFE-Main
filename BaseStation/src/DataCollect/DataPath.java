@@ -1,5 +1,8 @@
 package DataCollect;
 
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public interface DataPath {
     //Pour un travail sous windows: BaseStation/TestAffichage/jsonData
     //Linux sous windows: BaseStation/TestAffichage/jsonData
@@ -9,7 +12,7 @@ public interface DataPath {
     String getAltJsonEnd = " \n}\n}";
 
     String getCoordJsonBegin = "{\n\"action\": \"PUT\",\n\"content\": {\n\"type\": \"coordonnees\",\n\"value\": {\n\"x\":";
-    String getCoordJsonY=",\n\"y\":";
+    String getCoordJsonY = ",\n\"y\":";
     String getCoordJsonEnd = "\n}\n}\n}";
 
-    }
+}

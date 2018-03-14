@@ -8,7 +8,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-
 /**
  * Classe écrite par Kinda AL CHAHID
  */
@@ -16,11 +15,13 @@ public class Client implements Runnable, DataPath {
     static ParseJsonFormat jsonFormat = new ParseJsonFormat();
     JSONObject dataJSON;
     Data dataReceived, dataOrder;
+    String order;
 
 
     public Client(Data dataReceived, Data dataorder, String order) {
         this.dataReceived = dataReceived;
         this.dataOrder = dataorder;
+        this.order = order;
         if (order.equals("GET"))
             dataJSON = jsonFormat.getStringJson(getData);
         if (order.equals("PUTALT"))
@@ -44,6 +45,7 @@ public class Client implements Runnable, DataPath {
             jsonFormat.setData(jsonFormat.getJson(msgIn), dataReceived);
             socket.close();
         } catch (IOException e) {
+            System.out.println("Error : "+order);
             e.printStackTrace();
         }
 

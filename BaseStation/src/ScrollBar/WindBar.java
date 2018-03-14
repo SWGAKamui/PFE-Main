@@ -35,7 +35,7 @@ public class WindBar extends ScrollBarProcessing {
 
 
     public void update() {
-        over = parent.mouseX > xpos && parent.mouseX < xpos + swidth &&
+        over = parent.mouseX > xpos -50&& parent.mouseX < xpos + swidth - 220 &&
                 parent.mouseY > ypos + 30 && parent.mouseY < ypos + sheight + 30;
         if (parent.mousePressed && over)
             locked = true;

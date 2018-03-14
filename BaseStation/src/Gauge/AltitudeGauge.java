@@ -27,7 +27,7 @@ public class AltitudeGauge extends Gauge {
 
     public void draw() {
         super.draw(x, y);
-        drawGauge(PApplet.map(alt, 0, parent.width, 0, 1), max, step, stepNumber, "Altitude");
+        drawGauge(PApplet.map(alt, 0, parent.width, 0, 1), max, step, stepNumber, "Altitude"); //map permet de convertir une valeur vers une valeur comprise entre 0 et la taille de l'écran
 
         parent.popMatrix();
     }

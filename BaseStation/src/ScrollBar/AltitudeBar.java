@@ -6,6 +6,7 @@ import processing.core.PApplet;
  * Classe écrite par Kinda AL CHAHID
  */
 public class AltitudeBar extends ScrollBarProcessing {
+    public Boolean mouse = false;
     private int swidth, sheight;    // width and height of bar
     private float xpos, ypos;       // x and y position of bar
     private float spos, newspos;    // x position of slider
@@ -15,7 +16,6 @@ public class AltitudeBar extends ScrollBarProcessing {
     private PApplet parent;
     private int max = 7;
     private int step = 15;
-    public Boolean mouse = false;
 
     public AltitudeBar(PApplet p) {
         super(p);
@@ -40,7 +40,7 @@ public class AltitudeBar extends ScrollBarProcessing {
     }
 
     private void update() {
-        over = parent.mouseX > xpos && parent.mouseX < xpos + swidth - 110 &&
+        over = parent.mouseX > xpos -50 && parent.mouseX < xpos + swidth - 230 &&
                 parent.mouseY > ypos - 10 && parent.mouseY < ypos + sheight - 10;
         if (parent.mousePressed && over)
             locked = true;
@@ -60,7 +60,8 @@ public class AltitudeBar extends ScrollBarProcessing {
             return 170;
         return (int) (spos / 279 * 90) + 90;
     }
-    public void mouseReleased(){
+
+    public void mouseReleased() {
         mouse = true;
     }
 }

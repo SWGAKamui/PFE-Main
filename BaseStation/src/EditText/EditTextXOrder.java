@@ -6,15 +6,14 @@ import processing.core.PApplet;
  * Classe écrite par Kinda AL CHAHID
  */
 public class EditTextXOrder extends EditTextOrder {
+    public Boolean enter = false;
     private PApplet parent;
     private int xpos;
     private int ypos;
-
     private boolean over = false;
     private boolean click = false;
     private int x = 0;
     private String numberXString = "";
-    public Boolean enter = false;
 
 
     public EditTextXOrder(PApplet p) {
@@ -34,8 +33,9 @@ public class EditTextXOrder extends EditTextOrder {
             click = true;
             enter = false;
         }
-        super.draw(xpos, ypos, "Y", x);
+        super.draw(xpos, ypos, "X", x);
     }
+
     public void keyReleased() {
         if (click && parent.key != parent.ENTER && Character.isDigit(parent.key)) { //on bloque tout ce qui n'est pas un chiffre rentrée au clavier
             numberXString += Integer.parseInt(String.valueOf(parent.key));

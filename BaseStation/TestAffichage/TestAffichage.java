@@ -9,10 +9,14 @@ import OtherVisual.Box;
 import ScrollBar.AltitudeBar;
 import ScrollBar.WindBar;
 import processing.core.PApplet;
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */
 public class TestAffichage extends PApplet {
+    static Thread client;
+    private static volatile Data dataReceived = new Data();
+    private static volatile Data dataorder = new Data();
     private TestFct testFct = new TestFct(this);
     private AltitudeGauge altGauge = new AltitudeGauge(this);
     private LineHorizon lineHorizon = new LineHorizon(this);
@@ -22,12 +26,7 @@ public class TestAffichage extends PApplet {
     private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
-
     private Box box = new Box(this);
-    private static volatile Data dataReceived = new Data();
-    private static volatile Data dataorder = new Data();
-    static Thread client;
-
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
@@ -40,7 +39,7 @@ public class TestAffichage extends PApplet {
     }
 
     public void setup() {
-        testFct.testMain(altGauge,lineHorizon,speedGauge);
+        testFct.testMain(altGauge, lineHorizon, speedGauge);
         rectMode(CENTER);
         smooth();
 
@@ -82,9 +81,10 @@ public class TestAffichage extends PApplet {
     }
 
 
-    public void update(){
+    public void update() {
         editTextReceived.setXY(dataReceived.getCoord());
     }
+
     public void keyReleased() {
         editTextXOrder.keyReleased();
         editTextYOrder.keyReleased();
