@@ -9,7 +9,7 @@ public class Config {
     private final JSONObject object;
 
     public Config() {
-        File file = new File("BaseStation/src/Config/Config.json");
+        File file = new File("src/Config/Config.json");
         object = PApplet.loadJSONObject(file);
     }
 
