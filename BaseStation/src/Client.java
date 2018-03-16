@@ -1,3 +1,4 @@
+import Config.Config;
 import DataCollect.Data;
 import DataCollect.DataPath;
 import DataCollect.ParseJsonFormat;
@@ -8,21 +9,29 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-
 /**
  * Classe écrite par Kinda AL CHAHID
  */
 public class Client implements Runnable, DataPath {
-    static ParseJsonFormat jsonFormat = new ParseJsonFormat();
-    JSONObject dataJSON;
-    Data dataReceived, dataOrder;
+    private static ParseJsonFormat jsonFormat = new ParseJsonFormat();
+    private static String host;
+    private static int port;
+    private static String path;
+    private JSONObject dataJSON;
+    private Data dataReceived;
+    private String order;
 
 
     public Client(Data dataReceived, Data dataorder, String order) {
+        Config config = new Config();
+        host = config.getHost();
+        port = config.getPort();
+        path = config.getPath();
         this.dataReceived = dataReceived;
-        this.dataOrder = dataorder;
+        Data dataOrder = dataorder;
+        this.order = order;
         if (order.equals("GET"))
-            dataJSON = jsonFormat.getStringJson(getData);
+            dataJSON = jsonFormat.getStringJson(path + getData);
         if (order.equals("PUTALT"))
             dataJSON = jsonFormat.getJson(dataOrder.getJsonDataAlt());
         if (order.equals("PUTCOORD"))
@@ -30,9 +39,9 @@ public class Client implements Runnable, DataPath {
     }
 
     public void run() {
-        Socket socket = null;
+        Socket socket;
         try {
-            socket = new Socket("127.0.0.1", 5555);
+            socket = new Socket(host, port);
             String msgIn = "";
 
             DataInputStream dataIn = new DataInputStream(socket.getInputStream());
@@ -44,6 +53,7 @@ public class Client implements Runnable, DataPath {
             jsonFormat.setData(jsonFormat.getJson(msgIn), dataReceived);
             socket.close();
         } catch (IOException e) {
+            System.out.println("Error : " + order);
             e.printStackTrace();
         }
 

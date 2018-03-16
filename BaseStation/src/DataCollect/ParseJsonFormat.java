@@ -14,7 +14,8 @@ public class ParseJsonFormat {
         File file = new File(filename);
         return PApplet.loadJSONObject(file);
     }
-    public JSONObject getJson(String data){
+
+    public JSONObject getJson(String data) {
         return JSONObject.parse(data);
     }
 

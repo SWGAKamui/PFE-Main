@@ -10,9 +10,9 @@ public class AltitudeGauge extends Gauge {
     private PApplet parent;
     private int x;
     private int y;
-    private int max = 30;
+    private int max = 35;
     private int step = 5;
-    private double stepNumber = 5.67;
+    private int stepNumber = 5;
 
 
     public AltitudeGauge(PApplet p) {
@@ -27,12 +27,16 @@ public class AltitudeGauge extends Gauge {
 
     public void draw() {
         super.draw(x, y);
-        drawGauge(PApplet.map(alt, 0, parent.width, 0, 1), max, step, stepNumber, "Altitude");
+        drawGauge(PApplet.map(alt, 0, parent.width, 0, 1), max, step, stepNumber, "Altitude"); //map permet de convertir une valeur vers une valeur comprise entre 0 et la taille de l'écran
 
         parent.popMatrix();
     }
 
-    public void setAlt(float alt) {
-        this.alt = alt;
+    public void setAlt(float altitude) {
+        if (altitude > 170)
+            this.alt = 170;
+        else if (altitude < 0)
+            this.alt = 0;
+        this.alt = altitude;
     }
 }

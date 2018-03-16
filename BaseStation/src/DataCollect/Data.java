@@ -4,6 +4,9 @@ package DataCollect;
  * Classe écrite par Kinda AL CHAHID
  */
 public class Data implements DataPath {
+    /**
+     * Classe qui stocke l'ensemble des valeurs reçu ou a envoyer
+     */
     public int altitude;
     public int[] ypr = new int[3];
     public int[] coord = new int[2];

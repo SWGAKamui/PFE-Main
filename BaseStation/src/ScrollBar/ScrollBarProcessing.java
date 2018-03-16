@@ -10,7 +10,6 @@ abstract class ScrollBarProcessing {
     public float sposMin, sposMax; // max and min values of slider
     public int loose;              // how loose/heavy
     public PApplet parent;
-    public int ratio;
 
     public ScrollBarProcessing(PApplet p) {
         parent = p;
@@ -40,7 +39,7 @@ abstract class ScrollBarProcessing {
 
     public float constrain() {
         if (parent.mouseX > sposMax)
-            return sposMax - swidth / 2 - 20;
+            return sposMax - swidth / 2 -20;
         if (parent.mouseX < sposMin + 20)
             return sposMin - swidth / 2 + 30;
         return parent.mouseX - swidth / 2;

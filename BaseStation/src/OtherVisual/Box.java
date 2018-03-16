@@ -1,11 +1,13 @@
 package OtherVisual;
+
 import processing.core.PApplet;
+
 /**
  * Classe écrite par Kinda AL CHAHID
  */
 public class Box {
-    private PApplet parent;
     int xOrder, yOrder, xData, yData, xPos, yPos;
+    private PApplet parent;
 
     public Box(PApplet p) {
         parent = p;
@@ -43,6 +45,6 @@ public class Box {
         parent.rect(xPos, yPos, parent.width / 2 + parent.width / 5, parent.height);
         parent.textSize(30);
         parent.fill(255, 0, 0);
-        parent.text("Drone Position", xPos - xPos /3, -100);
+        parent.text("Drone Position", xPos - xPos / 3, -100);
     }
 }

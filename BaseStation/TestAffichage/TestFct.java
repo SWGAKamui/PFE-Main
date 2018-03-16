@@ -4,6 +4,9 @@ import OtherVisual.LineHorizon;
 import processing.core.PApplet;
 import processing.core.PVector;
 
+/**
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class TestFct {
 
     private PApplet parent;

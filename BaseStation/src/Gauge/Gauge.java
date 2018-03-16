@@ -31,7 +31,10 @@ abstract class Gauge {
             parent.line(r1 * parent.cos(a), r1 * parent.sin(a), r2 * parent.cos(a), r2 * parent.sin(a));
             a = parent.radians(180 + i * 170 / max);
             if (i % step == 0 || i == 0) {
-                parent.text(String.valueOf((int) (i * stepNumber)), r2 * parent.cos(a), r2 * parent.sin(a) - 80);
+                if(i * stepNumber >= 170)
+                    parent.text(String.valueOf(170), r2 * parent.cos(a), r2 * parent.sin(a) - 80);
+                else
+                    parent.text(String.valueOf((int)(i * stepNumber)), r2 * parent.cos(a), r2 * parent.sin(a) - 80);
                 parent.fill(255, 255, 255);
             }
         }
@@ -39,7 +42,7 @@ abstract class Gauge {
         parent.text(name, -40, -100);
 
         parent.stroke(255, 0, 0);
-        float b = parent.radians(210 + val * 120);
+        float b = parent.radians(213 + val * 111);
         parent.fill(255, 0, 0);
         parent.ellipse(0, 0, 10, 10);
         parent.line(-10 * parent.cos(b), -10 * parent.sin(b), 200 * parent.cos(b), 200 * parent.sin(b));

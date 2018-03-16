@@ -27,6 +27,8 @@ public class Main extends PApplet {
     private EditTextReceived editTextReceived = new EditTextReceived(this);
     private Box box = new Box(this);
 
+    private int timer = 0;
+
     public static void main(String[] args) {
         PApplet.main("Main");
         client = new Thread(new Client(dataReceived, dataorder, "GET"));
@@ -96,6 +98,11 @@ public class Main extends PApplet {
             client = new Thread(new Client(dataReceived, dataorder, "PUTALT"));
             client.start();
             client.interrupt();
+        }
+        if (++timer > 50) { //demande d'information sur le drone
+            timer = 0;
+            client = new Thread(new Client(dataReceived, dataorder, "GET"));
+            client.start();
         }
     }
 
