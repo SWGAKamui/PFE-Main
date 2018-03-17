@@ -4,6 +4,7 @@ import EditText.EditTextXOrder;
 import EditText.EditTextYOrder;
 import Gauge.AltitudeGauge;
 import Gauge.SpeedGauge;
+import Map.MapVisual;
 import OtherVisual.LineHorizon;
 import OtherVisual.Box;
 import ScrollBar.AltitudeBar;
@@ -26,6 +27,7 @@ public class Main extends PApplet {
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
     private Box box = new Box(this);
+    private MapVisual map =  new MapVisual(this);
 
     private int timer = 0;
 
@@ -36,24 +38,27 @@ public class Main extends PApplet {
     }
 
     public void settings() {
-        size(1600, 800);
+        size(displayWidth, displayHeight, P2D);
     }
 
     public void setup() {
+
         rectMode(CENTER);
         smooth();
 
-        altGauge.setup(width / 3, 0);
+        altGauge.setup(width / 3, 15);
         speedGauge.setup(width / 3, height / 3 + 50);
 
         windBar.setup(90, height - height / 3 - 30);
         altitudeBar.setup(90, height / 2 + height / 4 + 10);
 
-        editTextXOrder.setup(width / 5 + width / 10, height - height / 3);
-        editTextYOrder.setup(width / 5 + width / 6, height - height / 3);
+        editTextXOrder.setup(width / 5 + width / 10 +50, height - height / 3 );
+        editTextYOrder.setup(width / 5 + width / 6+50, height - height / 3);
 
         editTextReceived.setup(width / 15, height / 3 + 70);
 
+
+        map.setup(width/2 +70, -180);
 
         box.setup(width / 6 + 10, height - height / 3,
                 width / 6 + 10, 50,
@@ -76,6 +81,8 @@ public class Main extends PApplet {
         editTextXOrder.draw();
         editTextYOrder.draw();
         editTextReceived.draw();
+
+        map.draw();
         box.draw();
     }
 
