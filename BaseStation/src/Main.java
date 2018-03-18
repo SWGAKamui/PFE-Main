@@ -27,7 +27,7 @@ public class Main extends PApplet {
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
     private Box box = new Box(this);
-    private MapVisual map =  new MapVisual(this);
+    private MapVisual map = new MapVisual(this);
 
     private int timer = 0;
 
@@ -52,15 +52,15 @@ public class Main extends PApplet {
         windBar.setup(90, height - height / 3 - 30);
         altitudeBar.setup(90, height / 2 + height / 4 + 10);
 
-        editTextXOrder.setup(width / 5 + width / 10 +50, height - height / 3 );
-        editTextYOrder.setup(width / 5 + width / 6+50, height - height / 3);
+        editTextXOrder.setup(width / 5 + width / 10 + 50, height - height / 3);
+        editTextYOrder.setup(width / 5 + width / 6 + 50, height - height / 3);
 
         editTextReceived.setup(width / 15, height / 3 + 70);
 
 
-        map.setup(width/2 +70, -180);
+        map.setup(width / 2 + 70, -180);
 
-        box.setup(width / 6 + 10, height - height / 3,
+        box.setup(width / 6 + 30, height - height / 3,
                 width / 6 + 10, 50,
                 width - width / 10, 200);
     }
@@ -73,7 +73,7 @@ public class Main extends PApplet {
         lineHorizon.draw();
         scale((float) 1.35);
         fill(0);
-        rect(0, height, 1350, 900);
+        rect(0, height, displayWidth, displayHeight);
         altGauge.draw();
         speedGauge.draw();
         windBar.draw();

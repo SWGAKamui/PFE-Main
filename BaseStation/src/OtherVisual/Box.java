@@ -39,12 +39,5 @@ public class Box {
         parent.textSize(30);
         parent.fill(255, 0, 0);
         parent.text("Drone data", -200, parent.width / 5 + 20);
-        //Drone Position
-        parent.noFill();
-        parent.stroke(255);
-        parent.rect(xPos, yPos, parent.width / 2 + parent.width / 5, parent.height);
-        parent.textSize(30);
-        parent.fill(255, 0, 0);
-        parent.text("Drone Position", xPos - xPos / 3, -100);
     }
 }
