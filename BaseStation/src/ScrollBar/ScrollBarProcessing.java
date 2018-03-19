@@ -3,7 +3,10 @@ package ScrollBar;
 import processing.core.PApplet;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ *
+ * https://processing.org/examples/scrollbar.html
+ *
+ * Modifié par Kinda AL CHAHID
  */
 abstract class ScrollBarProcessing {
     public int swidth, sheight;    // width and height of bar

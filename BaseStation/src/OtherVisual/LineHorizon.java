@@ -3,7 +3,10 @@ package OtherVisual;
 import processing.core.PApplet;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ *
+ * https://forum.processing.org/one/topic/artificial-horizon-compass-18-4-2013.html
+ *
+ * Modifié par Kinda AL CHAHID
  */
 public class LineHorizon {
     private float pitch;

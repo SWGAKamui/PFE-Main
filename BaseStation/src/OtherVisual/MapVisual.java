@@ -1,4 +1,4 @@
-package Map;
+package OtherVisual;
 
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.geo.Location;
@@ -9,6 +9,11 @@ import processing.core.PApplet;
 
 import java.util.ArrayList;
 
+/**
+ * http://unfoldingmaps.org/tutorials/markers-simple
+ *
+ * Classe écrite par Kinda AL CHAHID
+ */
 public class MapVisual {
     UnfoldingMap map;
     int sizeW;

@@ -3,7 +3,9 @@ package Gauge;
 import processing.core.PApplet;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ * http://www.local-guru.net/processing/gauges/
+ *
+ * Modifié par Kinda AL CHAHID
  */
 abstract class Gauge {
     PApplet parent;
