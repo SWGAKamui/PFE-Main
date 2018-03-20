@@ -1,14 +1,11 @@
 package DataCollect;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ * @author Kinda AL CHAHID
  */
 public interface DataPath {
     /**
-     * Classe qui stocke les chemins vers les fichiers de tests JSON
-     * Attention, selon l'OS il est nécessaire de changer certain chemin
-     * Pour un travail sous windows: BaseStation/TestAffichage/jsonData
-     * Linux sous windows: BaseStation/TestAffichage/jsonData
+     * Interface permettant de stocker le format JSON des objets utilisé
      */
 
     String getData =  "get.json";

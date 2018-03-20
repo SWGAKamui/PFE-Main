@@ -22,9 +22,9 @@ public class MapVisual {
     PApplet parent;
     //Bordeaux = 44.838060,-0.579024
     //Paris = 48.853401,2.348781
-    Location locationStart = new Location(44.838060f, -0.579024f); //Bordeaux
-    Location locationEnd = new Location(48.853401f, 2.348781f); // Paris
-    Location locationDrone = new Location(44.808302, -0.596738f);
+    Location locationStart = new Location(44.838060f, -0.579024f); // position gps de Bordeaux
+    Location locationEnd = new Location(48.853401f, 2.348781f); // position gps de Paris
+    Location locationDrone = new Location(44.808302, -0.596738f); // Position du drone en coordonnée gps (cremi)
     double distanceLeft;
 
     public MapVisual(PApplet p) {
@@ -37,41 +37,39 @@ public class MapVisual {
         sizeW = parent.width / 2 + parent.width / 5;
         sizeH = parent.height;
 
-        map = new UnfoldingMap(parent, x, y, sizeW, sizeH);
-        map.zoomAndPanTo(7, new Location(45.778007,3.08440));
-        MapUtils.createDefaultEventDispatcher(parent, map);
+        map = new UnfoldingMap(parent, x, y, sizeW, sizeH); //Création d'une nouvelle carte
+        map.zoomAndPanTo(7, new Location(45.778007,3.08440)); //zoom sur la France en utilisant les coordonnées gps de Clermont Ferrand comme point central
+        MapUtils.createDefaultEventDispatcher(parent, map); //Affichage dans l'executable
     }
 
     public void draw() {
-        moveDrone();
-        map.draw();
+        moveDrone(); //mise en place d'une simulation de mouvement du drone
+        map.draw(); //affichage de la carte
 
-        // Draws locations on screen positions according to their geo-locations.
+        //Affichage du point de départ
+        ScreenPosition posStart = map.getScreenPosition(locationStart); //A partir de coordonnées gps, transférer en point x/y de l'écran
+        parent.fill(0, 200, 0, 100);//remplissage vert avec une transparence
+        parent.ellipse(posStart.x, posStart.y, 20, 20);//affichage d'un point circulaire
 
-        // Fixed-size marker start
-        ScreenPosition posStart = map.getScreenPosition(locationStart);
-        parent.fill(0, 200, 0, 100);
-        parent.ellipse(posStart.x, posStart.y, 20, 20);
-
-        // Fixed-size marker end
-        ScreenPosition posEnd = map.getScreenPosition(locationEnd);
-        parent.fill(0, 200, 0, 100);
-        parent.ellipse(posEnd.x, posEnd.y, 20, 20);
+        //Affichage du point de destination
+        ScreenPosition posEnd = map.getScreenPosition(locationEnd); //A partir de coordonnées gps, transférer en point x/y de l'écran
+        parent.fill(0, 200, 0, 100);//remplissage vert avec une transparence
+        parent.ellipse(posEnd.x, posEnd.y, 20, 20);//affichage d'un point circulaire
 
 
-        // Fixed-size marker end
-        ScreenPosition posDrone = map.getScreenPosition(locationDrone);
-        parent.fill(0, 0, 200, 100);
-        parent.ellipse(posDrone.x, posDrone.y, 20, 20);
+        //Affichage du point du drone
+        ScreenPosition posDrone = map.getScreenPosition(locationDrone); //A partir de coordonnées gps, transférer en point x/y de l'écran
+        parent.fill(0, 0, 200, 100);//remplissage bleu avec une transparence
+        parent.ellipse(posDrone.x, posDrone.y, 20, 20);//affichage d'un point circulaire
 
-        distanceLeft = locationDrone.getDistance(locationEnd) * 1000;
-        String distance = String.valueOf(distanceLeft);
-        parent.textSize(25);
-        parent.fill(255, 0, 0);
-        parent.text("Distance left: " + distance + " m", x, y - 10);
+        distanceLeft = locationDrone.getDistance(locationEnd) * 1000; //Calcule de la distance en mètre
+        String distance = String.valueOf(distanceLeft); //converstion en string
+        parent.textSize(25);//taille du text
+        parent.fill(255, 0, 0);//remplissage en rouge
+        parent.text("Distance left: " + distance + " m", x, y - 10); //affichage de la distance qui reste au drone a parcourir
 
-        parent.stroke(255, 0, 0);
-        parent.line(posStart.x, posStart.y, posEnd.x, posEnd.y);
+        parent.stroke(255, 0, 0);//remplissage rouge
+        parent.line(posStart.x, posStart.y, posEnd.x, posEnd.y);//affichage de la direction que doit prendre le drone
     }
 
     public void setLocationStart(int x, int y) {
@@ -93,6 +91,10 @@ public class MapVisual {
     }
 
     public void moveDrone() {
+        /**
+         *mise en place d'une simulation de mouvement du drone
+         */
+
         double x = (locationEnd.x - locationDrone.x)/1000;
         double y = (locationEnd.y - locationDrone.y) / 1000;
         if (distanceLeft < 30) {
@@ -100,9 +102,5 @@ public class MapVisual {
             y *= 10;
         }
         setLocationDrone(x * 10, y * 10);
-    }
-
-    public void distance() {
-
     }
 }

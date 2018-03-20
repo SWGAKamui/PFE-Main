@@ -4,7 +4,7 @@ import EditText.EditTextXOrder;
 import EditText.EditTextYOrder;
 import Gauge.AltitudeGauge;
 import Gauge.SpeedGauge;
-import Map.MapVisual;
+import OtherVisual.MapVisual;
 import OtherVisual.LineHorizon;
 import OtherVisual.Box;
 import ScrollBar.AltitudeBar;
@@ -61,8 +61,7 @@ public class Main extends PApplet {
         map.setup(width / 2 + 70, -180);
 
         box.setup(width / 6 + 30, height - height / 3,
-                width / 6 + 10, 50,
-                width - width / 10, 200);
+                width / 6 + 10, 50);
     }
 
     public void draw() {

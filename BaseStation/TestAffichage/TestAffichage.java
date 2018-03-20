@@ -4,8 +4,9 @@ import EditText.EditTextXOrder;
 import EditText.EditTextYOrder;
 import Gauge.AltitudeGauge;
 import Gauge.SpeedGauge;
-import OtherVisual.LineHorizon;
 import OtherVisual.Box;
+import OtherVisual.LineHorizon;
+import OtherVisual.MapVisual;
 import ScrollBar.AltitudeBar;
 import ScrollBar.WindBar;
 import processing.core.PApplet;
@@ -27,6 +28,7 @@ public class TestAffichage extends PApplet {
     private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
     private Box box = new Box(this);
+    private MapVisual map = new MapVisual(this);
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
@@ -35,41 +37,44 @@ public class TestAffichage extends PApplet {
     }
 
     public void settings() {
-        size(displayWidth, displayHeight);
+        size(displayWidth, displayHeight, P2D);
     }
 
     public void setup() {
         testFct.testMain(altGauge, lineHorizon, speedGauge);
+
         rectMode(CENTER);
         smooth();
 
-        altGauge.setup(width / 3, 10);
+        altGauge.setup(width / 3, 15);
         speedGauge.setup(width / 3, height / 3 + 50);
 
         windBar.setup(90, height - height / 3 - 30);
         altitudeBar.setup(90, height / 2 + height / 4 + 10);
 
-        editTextXOrder.setup(width / 5 + width / 10 +50, height - height / 3 );
-        editTextYOrder.setup(width / 5 + width / 6+50, height - height / 3);
+        editTextXOrder.setup(width / 5 + width / 10 + 50, height - height / 3);
+        editTextYOrder.setup(width / 5 + width / 6 + 50, height - height / 3);
 
         editTextReceived.setup(width / 15, height / 3 + 70);
 
 
-        box.setup(width / 6 + 10, height - height / 3,
-                width / 6 + 10, 50,
-                width - width / 10, 200);
+        map.setup(width / 2 + 70, -180);
+
+        box.setup(width / 6 + 30, height - height / 3,
+                width / 6 + 10, 50);
     }
 
     public void draw() {
+        testFct.draw();
         update();
 
-        testFct.draw();
         background(0);
         scale((float) 0.5);
         lineHorizon.draw();
         scale((float) 1.35);
         fill(0);
-        rect(0, height, 1350, 900);
+        rect(0, height, displayWidth, displayHeight);
+        rect(width/2 + width/10, 0, displayWidth, displayHeight);
         altGauge.draw();
         speedGauge.draw();
         windBar.draw();
@@ -77,6 +82,8 @@ public class TestAffichage extends PApplet {
         editTextXOrder.draw();
         editTextYOrder.draw();
         editTextReceived.draw();
+
+        map.draw();
         box.draw();
     }
 

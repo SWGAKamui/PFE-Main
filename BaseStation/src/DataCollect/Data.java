@@ -1,7 +1,7 @@
 package DataCollect;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ * @author Kinda AL CHAHID
  */
 public class Data implements DataPath {
     /**
