@@ -42,7 +42,9 @@ public class Main extends PApplet {
     }
 
     public void setup() {
-
+        /**contient des valeurs empiriques
+         * qui servent de décalage nécessaire pour les éléments graphiques
+         */
         rectMode(CENTER);
         smooth();
 

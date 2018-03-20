@@ -4,9 +4,10 @@ import processing.core.PApplet;
 
 /**
  *
+ * Code tutoriel processing original à l'adresse :
  * https://processing.org/examples/scrollbar.html
  *
- * Modifié par Kinda AL CHAHID
+ * Modifié par Kinda AL CHAHID et adapté
  */
 abstract class ScrollBarProcessing {
     public int swidth, sheight;   //largeur et longueur de la bar
