@@ -33,6 +33,8 @@ public class Server {
     private static JScrollPane jspan2=new JScrollPane(text2);
     private static JLabel label=new JLabel("Liste des composants connecté");
     private static JLabel label1=new JLabel("les information I/O");
+    public static final Color VERY_DARK_GREEN = new Color(0,102,0);
+    public static final Color VERY_DARK_BLUE = new Color(0,0,204);
 
     //Creation de IHM
     public static void Fentre(){
@@ -49,6 +51,9 @@ public class Server {
         jspan1.setBounds(5,30,150,100);
         container.add(jspan2);
         jspan2.setBounds(200,30,350,300);
+        
+        text1.setEditable(false);
+        text2.setEditable(false);
 
         Fentre.getContentPane().add(container);
         Fentre.setVisible(true);
@@ -70,25 +75,39 @@ public class Server {
         textPane.replaceSelection(msg);
     }
     
-    //Setters & getters pour text1 & text2
+    //Setters & getters pour text1 & text2 selon couleur de Log
     public static void settext1(String s){  
+        text1.setEditable(true);
         appendJTextWithColor(text1, s+"\n", Color.BLACK);
+        text1.setEditable(false);
     	  }
     public String gettext1(){
     	return text1.getText();
     	}
-
     public static void settext2(String s){
-    	appendJTextWithColor(text2, s+"\n", Color.BLACK);  
+        text2.setEditable(true);
+    	appendJTextWithColor(text2, s+"\n", Color.BLACK); 
+    	text2.setEditable(false);
     	}
     public String gettext2(){
     	return text2.getText(); 
     	}
-
     public static void text2EROR(String s){  
+        text2.setEditable(true);
         appendJTextWithColor(text2, s+"\n", Color.RED);
+        text2.setEditable(false);
     	 }
-    
+    public static void text2INFO_Send(String s){ 
+        text2.setEditable(true);
+        appendJTextWithColor(text2, s+"\n", VERY_DARK_GREEN);
+        text2.setEditable(false);
+    	 }
+    public static void text2INFO_Insered(String s){
+        text2.setEditable(true);
+        appendJTextWithColor(text2, s+"\n", VERY_DARK_BLUE);
+        text2.setEditable(false);
+    }
+
     /*
     * creation de server socket qui ecoute sur un port
     * Acccepter des clients
