@@ -60,26 +60,38 @@ public class Client implements Runnable {
             sc = new BufferedReader(new InputStreamReader(System.in));
             out = new PrintStream(clientSocket.getOutputStream());
             in = new DataInputStream(clientSocket.getInputStream());
+
+
         } catch (UnknownHostException e) {
-            System.err.println("host inconnue " + host);
+            System.err.println("Hôte "+host+" inconnue " );
         } catch (IOException e) {
-            System.err.println("Impossible d'obtenir des E / S pour la connexion Ã  l'hÃ´te "+ host);
+            System.err.println("Impossible d'obtenir des E / S pour la connexion à  l'hôte: "+ host);
         }
 
 
         if (clientSocket != null && out != null && in != null) {
 
 
-            new Thread(new Client()).start();
-            // while (!closed) {
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    out.println(text2.getText());
-                    text2.setText("");
-                }
-            });
+        	   new Thread(new Client()).start();
+               // while (!closed) {
+               button.addActionListener(new ActionListener() {
+                   @Override
+                   public void actionPerformed(ActionEvent e) {
+                       out.println(text2.getText().replaceAll("[\r\n]+", ""));
+                       /*String text="{\n" +
+                               "  \"action\": \"GET\",\n" +
+                               "  \"content\": {\n" +
+                               "    \"type\": \"altitude\"\n" +
+                               "  }\n" +
+                               "}";
+                               //text2.getText();
+                       System.out.println(text);
+                       text1.setText(text);*/
+                       text2.setText("");
 
+                   }
+
+               });
         }
     }
 

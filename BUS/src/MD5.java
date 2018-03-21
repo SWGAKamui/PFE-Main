@@ -1,20 +1,21 @@
-
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 /**
  *@authors ZAMOUCHE & ZEROUALI
  */
+
 /**
-  Fonction de hachage
+  Classe MD5 pour hachage
  */
 public class MD5{
 
-    public static String getMD5(String input) {
+    public static String getMD5(String pwd) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] messageDigest = md.digest(input.getBytes());
-            BigInteger number = new BigInteger(1, messageDigest);
+            byte[] msgByte = md.digest(pwd.getBytes());
+            BigInteger number = new BigInteger(1, msgByte);
             String hashtext = number.toString(16);
             while (hashtext.length() < 32) {
                 hashtext = "0" + hashtext;
