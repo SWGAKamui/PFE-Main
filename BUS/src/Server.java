@@ -1,4 +1,9 @@
 import javax.swing.*;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+
 import java.awt.*;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -22,17 +27,17 @@ public class Server {
     //Declaration des variables pour IHM
     private static JFrame Fentre=new JFrame();
     private static Container container=new Container();
-    private static JTextArea text1=new JTextArea();
-     static JTextArea text2=new JTextArea();
+    private static JTextPane text1=new JTextPane();
+    private static JTextPane text2=new JTextPane();
     private static JScrollPane jspan1=new JScrollPane(text1);
     private static JScrollPane jspan2=new JScrollPane(text2);
-    private static JLabel label=new JLabel("Liste des composants connectÃ©");
+    private static JLabel label=new JLabel("Liste des composants connecté");
     private static JLabel label1=new JLabel("les information I/O");
 
     //Creation de IHM
     public static void Fentre(){
         Fentre.setLocation(10,10);
-        Fentre.setTitle("DÃ©buggue");
+        Fentre.setTitle("BUS Debug Log");
         Fentre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Fentre.setSize(600,400);
 
@@ -49,13 +54,41 @@ public class Server {
         Fentre.setVisible(true);
 
     }
+    
+    //append du text de Debug Log selon couleur 
+    private static void appendJTextWithColor(JTextPane textPane, String msg, Color color)
+    {
+        StyleContext style = StyleContext.getDefaultStyleContext();
+        AttributeSet attr = style.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, color);
+
+        attr = style.addAttribute(attr, StyleConstants.FontFamily, "Lucida Console");
+        attr = style.addAttribute(attr, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+        
+        int l = textPane.getDocument().getLength();
+        textPane.setCaretPosition(l);
+        textPane.setCharacterAttributes(attr, false);
+        textPane.replaceSelection(msg);
+    }
+    
     //Setters & getters pour text1 & text2
-    public static void settext1(String s){  text1.append(s+"\n");  }
-    public String gettext1(){ return text1.getText(); }
+    public static void settext1(String s){  
+        appendJTextWithColor(text1, s+"\n", Color.BLACK);
+    	  }
+    public String gettext1(){
+    	return text1.getText();
+    	}
 
-    public static void settext2(String s){  text2.append(s+"\n");  }
-    public String gettext2(){ return text2.getText(); }
+    public static void settext2(String s){
+    	appendJTextWithColor(text2, s+"\n", Color.BLACK);  
+    	}
+    public String gettext2(){
+    	return text2.getText(); 
+    	}
 
+    public static void text2EROR(String s){  
+        appendJTextWithColor(text2, s+"\n", Color.RED);
+    	 }
+    
     /*
     * creation de server socket qui ecoute sur un port
     * Acccepter des clients
@@ -87,7 +120,7 @@ public class Server {
                 }
             }
 
-            Server.settext1(login + " est connectÃ©");
+            Server.settext1(login + " est connecté");
             System.out.println("message " + login);
 
             //Creation d'un nouveau client
