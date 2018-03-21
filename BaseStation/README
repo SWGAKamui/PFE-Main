@@ -1,0 +1,15 @@
+Composition répertoire :
+    - src
+        - Config
+        - DataCollect
+        - Widget
+            - EditText
+
+Comment lancer le projet?
+    Si vous souhaitez tester uniquement la base:
+        - Lancer le Server.java
+        - Lancer Main.java
+
+        TestAffichage remplace Main.java pour tester uniquement l'affichage
+
+    Si vous souhaitez changer des paramètres, le fichier src/Config/Config.json conserve les paramètres modifiables.

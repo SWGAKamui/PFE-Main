@@ -1,39 +1,33 @@
 import DataCollect.Data;
-import EditText.EditTextReceived;
-import EditText.EditTextXOrder;
-import EditText.EditTextYOrder;
-import Gauge.AltitudeGauge;
-import Gauge.SpeedGauge;
-import OtherVisual.MapVisual;
-import OtherVisual.LineHorizon;
-import OtherVisual.Box;
-import ScrollBar.AltitudeBar;
-import ScrollBar.WindBar;
+import Widget.*;
+import Widget.EditText.EditTextOrder;
+import Widget.EditText.EditTextReceived;
 import processing.core.PApplet;
 
 /**
  * Classe écrite par Kinda AL CHAHID
  */
 public class Main extends PApplet {
-    static Thread client;
-    private static volatile Data dataReceived = new Data();
-    private static volatile Data dataorder = new Data();
-    private AltitudeGauge altGauge = new AltitudeGauge(this);
+    private static Thread client;
+    private static Data dataReceived = new Data();
+    private static Data dataOrder = new Data();
+    private Gauge altGauge = new Gauge(this);
     private LineHorizon lineHorizon = new LineHorizon(this);
-    private SpeedGauge speedGauge = new SpeedGauge(this);
-    private WindBar windBar = new WindBar(this);
-    private AltitudeBar altitudeBar = new AltitudeBar(this);
-    private EditTextXOrder editTextXOrder = new EditTextXOrder(this);
-    private EditTextYOrder editTextYOrder = new EditTextYOrder(this);
+    private Gauge speedGauge = new Gauge(this);
+    private ScrollBarProcessing windBar = new ScrollBarProcessing(this);
+    private ScrollBarProcessing altitudeBar = new ScrollBarProcessing(this);
+    private EditTextOrder editTextXOrder = new EditTextOrder(this);
+    private EditTextOrder editTextYOrder = new EditTextOrder(this);
     private EditTextReceived editTextReceived = new EditTextReceived(this);
-    private Box box = new Box(this);
+    private Box boxOrder = new Box(this);
+    private Box boxData = new Box(this);
     private MapVisual map = new MapVisual(this);
 
     private int timer = 0;
 
     public static void main(String[] args) {
         PApplet.main("Main");
-        client = new Thread(new Client(dataReceived, dataorder, "GET"));
+        client = new Thread(new Client(dataReceived, dataOrder, "GET"));
         client.start();
     }
 
@@ -42,28 +36,29 @@ public class Main extends PApplet {
     }
 
     public void setup() {
-        /**contient des valeurs empiriques
-         * qui servent de décalage nécessaire pour les éléments graphiques
-         */
         rectMode(CENTER);
         smooth();
 
-        altGauge.setup(width / 3, 15);
-        speedGauge.setup(width / 3, height / 3 + 50);
+        altGauge.setup(width / 3, 0, "Altitude", 170, 35, 5, 5);
+        speedGauge.setup(width / 3, height / 3, "Speed", 100, 35, 5, 3);
 
-        windBar.setup(90, height - height / 3 - 30);
-        altitudeBar.setup(90, height / 2 + height / 4 + 10);
+        int stepBar = 125;
+        int yposBar = height / 3 + height / 3 - stepBar / 5;
 
-        editTextXOrder.setup(width / 5 + width / 10 + 50, height - height / 3);
-        editTextYOrder.setup(width / 5 + width / 6 + 50, height - height / 3);
+        windBar.setup(90, yposBar, "Wind", 7.25f, 6);
+        altitudeBar.setup(90, yposBar + stepBar, "Altitude", 11.9f, 8);
 
-        editTextReceived.setup(width / 15, height / 3 + 70);
+        editTextXOrder.setup(width / 5 + width / 10, height - height / 3, "X");
+        editTextYOrder.setup(width / 5 + width / 6, height - height / 3, "Y");
+
+        editTextReceived.setup(width / 15, height / 3);
 
 
-        map.setup(width / 2 + 70, -180);
+        map.setup(width / 2 + width / 15, -height / 4);
+        int space = (int) (height / 3.85);
+        boxData.setup(space, space / 10, width / 2 + width / 9, height / 2 + height / 5, "Data Box");
+        boxOrder.setup(space, height - height / 3, width / 2 + width / 9, height / 4, "Order Box");
 
-        box.setup(width / 6 + 30, height - height / 3,
-                width / 6 + 10, 50);
     }
 
     public void draw() {
@@ -74,7 +69,7 @@ public class Main extends PApplet {
         lineHorizon.draw();
         scale((float) 1.35);
         fill(0);
-        rect(0, height, displayWidth, displayHeight);
+        rect(0, height + height / 10, displayWidth, displayHeight);
         altGauge.draw();
         speedGauge.draw();
         windBar.draw();
@@ -84,32 +79,38 @@ public class Main extends PApplet {
         editTextReceived.draw();
 
         map.draw();
-        box.draw();
+        boxData.draw();
+        boxOrder.draw();
+
+        int space = -width / 10;
+        boxData.drawText(space, height / 3);
+        space = width / 3;
+        boxOrder.drawText(space, height / 2 + height / 4);
     }
 
 
-    public void update() {
-        dataorder.setCoord(new int[]{editTextXOrder.getX(), editTextYOrder.getY()});
+    private void update() {
+        dataOrder.setCoord(new int[]{editTextXOrder.getValue(), editTextYOrder.getValue()});
         //dataorder.set(windBar.getPos());
-        altGauge.setAlt(dataReceived.getAltitude() * 10 - 50);
+        altGauge.setValue(dataReceived.getAltitude() * 10);
         editTextReceived.setXY(dataReceived.getCoord());
         if (editTextXOrder.enter && editTextYOrder.enter) {
             editTextYOrder.enter = false;
             editTextXOrder.enter = false;
-            client = new Thread(new Client(dataReceived, dataorder, "PUTCOORD"));
+            client = new Thread(new Client(dataReceived, dataOrder, "PUTCOORD"));
             client.start();
             client.interrupt();
         }
-        if (dataorder.getAltitude() != altitudeBar.getPos() && altitudeBar.mouse) {
+        if (dataOrder.getAltitude() != altitudeBar.getPos() && altitudeBar.mouse) {
             altitudeBar.mouse = false;
-            dataorder.setAltitude(altitudeBar.getPos());
-            client = new Thread(new Client(dataReceived, dataorder, "PUTALT"));
+            dataOrder.setAltitude(altitudeBar.getPos());
+            client = new Thread(new Client(dataReceived, dataOrder, "PUTALT"));
             client.start();
             client.interrupt();
         }
         if (++timer > 50) { //demande d'information sur le drone
             timer = 0;
-            client = new Thread(new Client(dataReceived, dataorder, "GET"));
+            client = new Thread(new Client(dataReceived, dataOrder, "GET"));
             client.start();
         }
     }
@@ -121,6 +122,6 @@ public class Main extends PApplet {
 
     public void mouseReleased() {
         altitudeBar.mouseReleased();
-
+        windBar.mouseReleased();
     }
 }

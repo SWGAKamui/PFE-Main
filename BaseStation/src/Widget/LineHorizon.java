@@ -1,10 +1,11 @@
-package OtherVisual;
+package Widget;
 
 import processing.core.PApplet;
 
 /**
+ * @author processor65
  * https://forum.processing.org/one/topic/artificial-horizon-compass-18-4-2013.html
- * <p>
+ * Licence : aucune
  * Modifié par Kinda AL CHAHID
  */
 public class LineHorizon {

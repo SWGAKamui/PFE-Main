@@ -1,6 +1,5 @@
-import Gauge.AltitudeGauge;
-import Gauge.SpeedGauge;
-import OtherVisual.LineHorizon;
+import Widget.Gauge;
+import Widget.LineHorizon;
 import processing.core.PApplet;
 import processing.core.PVector;
 
@@ -10,15 +9,15 @@ import processing.core.PVector;
 public class TestFct {
 
     private PApplet parent;
-    private AltitudeGauge altitudeGauge;
+    private Gauge altitudeGauge;
     private LineHorizon lineHorizon;
-    private SpeedGauge speedGauge;
+    private Gauge speedGauge;
 
     public TestFct(PApplet p) {
         parent = p;
     }
 
-    public void testMain(AltitudeGauge altitudeGauge, LineHorizon lineHorizon, SpeedGauge speedGauge) {
+    public void testMain(Gauge altitudeGauge, LineHorizon lineHorizon, Gauge speedGauge) {
         this.altitudeGauge = altitudeGauge;
         this.lineHorizon = lineHorizon;
         this.speedGauge = speedGauge;
@@ -29,8 +28,8 @@ public class TestFct {
         PVector v1 = new PVector(parent.width / 2, parent.height / 2);
         PVector v2 = new PVector(parent.mouseX, parent.mouseY);
 
-        altitudeGauge.setAlt(parent.mouseX);
-        speedGauge.setSpeed(parent.mouseX);
+        altitudeGauge.setValue(parent.mouseX);
+        speedGauge.setValue(parent.mouseX);
         lineHorizon.setRoll(PVector.angleBetween(v1, v2));
         lineHorizon.setPitch(parent.mouseY - parent.height / 2);
     }
