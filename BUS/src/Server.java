@@ -28,7 +28,7 @@ public class Server {
         serverSocket = new ServerSocket(port);
         Date date = new Date();
     	SimpleDateFormat shortDateFormat = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
-    	API.setText2TRACE("["+shortDateFormat.format(date).toString()+"], Le server est en ecoute sur le port 2000");
+    	IHM_BUS.setText2TRACE("["+shortDateFormat.format(date).toString()+"], Le server est en ecoute sur le port 2000");
         System.out.println("Le server est en ecoute sur le port 2000");
 
         while (true){
@@ -52,7 +52,7 @@ public class Server {
                 }
             }
 
-            API.setText1COMPOSANTS(login + " est connecté");
+            IHM_BUS.setText1COMPOSANTS(login + " est connecté");
             System.out.println("message " + login);
 
             //Creation d'un nouveau client
@@ -68,7 +68,7 @@ public class Server {
 
     public static void main(String args[]) throws IOException {
 
-        API.Fentre();
+        IHM_BUS.Fentre();
         server();
 
     }

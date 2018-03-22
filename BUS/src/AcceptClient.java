@@ -55,7 +55,7 @@ public class AcceptClient extends Thread {
                 boolean b=isJSONDataValid(message);
                 if (message!=null && isJSONDataValid(message)==true){
                 	
-                    	API.setText2TRACE("["+shortDateFormat.format(date).toString()+"], "+message); //Log action reçu
+                    	IHM_BUS.setText2TRACE("["+shortDateFormat.format(date).toString()+"], "+message); //Log action reçu
                     	
                     	long startTime = System.nanoTime();
                     	
@@ -74,7 +74,7 @@ public class AcceptClient extends Thread {
                             Date datePUT = new Date();
                          	SimpleDateFormat shortDatePUT = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                           //Log action de reponse envoyé
-                        	API.setText2INFO_Insered("["+shortDatePUT.format(datePUT).toString()+"], {\"action\":\"PUT\",\"content\":"+content);
+                        	IHM_BUS.setText2INFO_Insered("["+shortDatePUT.format(datePUT).toString()+"], {\"action\":\"PUT\",\"content\":"+content);
                         	
                         } else if (action.equals("GET")) {
                             JSONObject content1 = obj.getJSONObject("content");
@@ -83,7 +83,7 @@ public class AcceptClient extends Thread {
                             Date dateGET = new Date();
                          	SimpleDateFormat shortDateGET = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                             //Log action de reponse envoyé
-                        	API.setText2INFO_Send("["+shortDateGET.format(dateGET).toString()+"], "+response);
+                        	IHM_BUS.setText2INFO_Send("["+shortDateGET.format(dateGET).toString()+"], "+response);
                             out.println(response);
                             out.flush();
                         }
@@ -92,7 +92,7 @@ public class AcceptClient extends Thread {
                 	 Date d = new Date();
                  	SimpleDateFormat shortDateF = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                 	//Log error s'il n'est pas au format JSON
-                	API.setText2EROR("["+shortDateF.format(d).toString()+"], "+message+": Les données ne sont pas au format JSON !?");
+                	IHM_BUS.setText2EROR("["+shortDateF.format(d).toString()+"], "+message+": Les données ne sont pas au format JSON !?");
                 	
                 	out.println("Les données ne sont pas au format JSON !?");
                     out.flush();
