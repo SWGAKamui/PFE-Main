@@ -117,7 +117,7 @@ public class API {
     }
     
     //Setters & getters pour text1 & text2 selon couleur de Log
-    public static void settext1(String s){  
+    public static void setText1COMPOSANTS(String s){  
         text1.setEditable(true);
         appendJTextWithColor(text1, s+"\n", Color.BLACK);
         text1.setEditable(false);
@@ -125,7 +125,7 @@ public class API {
     public String gettext1(){
     	return text1.getText();
     	}
-    public static void settext2(String s){
+    public static void setText2TRACE(String s){
         text2.setEditable(true);
     	appendJTextWithColor(text2, s+"\n", Color.BLACK); 
     	text2.setEditable(false);
@@ -133,17 +133,17 @@ public class API {
     public String gettext2(){
     	return text2.getText(); 
     	}
-    public static void text2EROR(String s){  
+    public static void setText2EROR(String s){  
         text2.setEditable(true);
         appendJTextWithColor(text2, s+"\n", Color.RED);
         text2.setEditable(false);
     	 }
-    public static void text2INFO_Send(String s){ 
+    public static void setText2INFO_Send(String s){ 
         text2.setEditable(true);
         appendJTextWithColor(text2, s+"\n", VERY_DARK_GREEN);
         text2.setEditable(false);
     	 }
-    public static void text2INFO_Insered(String s){
+    public static void setText2INFO_Insered(String s){
         text2.setEditable(true);
         appendJTextWithColor(text2, s+"\n", VERY_DARK_BLUE);
         text2.setEditable(false);

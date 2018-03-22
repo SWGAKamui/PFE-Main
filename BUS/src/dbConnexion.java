@@ -58,7 +58,7 @@ public class dbConnexion {
     }
 
     //Selection des donnees demandees
-    public static String Select (JSONObject obj) throws JSONException {
+    public static String Select(JSONObject obj) throws JSONException {
         JSONObject json = obj;
         String type=obj.getString("type");
 
