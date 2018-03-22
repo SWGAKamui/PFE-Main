@@ -41,7 +41,7 @@ public class IHM_BUS {
     //Creation de IHM
     public static void Fentre(){
         Fentre.setLocation(10,10);
-        Fentre.setTitle("API BUS");
+        Fentre.setTitle("BUS APP");
         Fentre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Fentre.setSize(1004,466);
         Fentre.setResizable(false);
@@ -96,7 +96,7 @@ public class IHM_BUS {
         lblNewLabel_2.setBounds(41, 87, 145, 14);
         panel_2.add(lblNewLabel_2);
         
-        lblApiBus = new JLabel("API BUS\u2502V1.0\u2502\u00A9 2018 \u2502Imane ZEROUALI & Ali  ZAMOUCHE \u2502Univ Bordeaux.  ");
+        lblApiBus = new JLabel("BUS APP\u2502V1.0\u2502\u00A9 2018 \u2502Imane ZEROUALI & Ali  ZAMOUCHE \u2502Univ Bordeaux.  ");
         lblApiBus.setBounds(526, 403, 575, 14);
         
         container.add(lblApiBus);
