@@ -61,8 +61,11 @@ public class Gauge {
         parent.textSize(textSize);//taille du texte
         parent.stroke(colorWhite.getRGB());//remplissage en blanc
 
+        int posX = 120;
+        int posY = 210;
+
         for (int i = 0; i < maxLine + 1; i++) {
-            float a = PApplet.radians(210 + i * 120 / maxLine); //orientation de la graduation
+            float a = PApplet.radians(posY + i * posX / maxLine); //orientation de la graduation
 
             float r1 = 200;
             float r2 = 190;
@@ -79,6 +82,8 @@ public class Gauge {
     }
 
     private void drawArraw(float newValue) {
+        int posX = 120;
+        int posY = 210;
         //Paramètre pour l'aiguille de la jauge
         parent.stroke(colorRed.getRGB());//remplissage en rouge
         float value = map(newValue, 0, 1, parent.width / 9f, parent.width / 5.6f);

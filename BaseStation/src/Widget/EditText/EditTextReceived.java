@@ -32,19 +32,19 @@ public class EditTextReceived {
         int spaceInt = 8;
         parent.fill(colorWhite); // la boite prend la teinte blanche
         //------------------------X-------------
-        parent.rect(xpos, ypos, swidth, sheight); //création de la boite carré de 55 de coté
+        //parent.rect(xpos, ypos, swidth, sheight); //création de la boite carré de 55 de coté
         parent.textSize(20);//Taille du texte
         parent.fill(colorWhite); //Couleur du nom de la boite: blanc
         parent.text("X", xpos - 5, ypos - spaceTextBox);//Ecriture du nom de la boite au dessus de celle-ci
-        parent.fill(colorBlack);//couleur noir de la variable récupérer
+        //parent.fill(colorBlack);//couleur noir de la variable récupérer
         parent.text(x, xpos - (spaceInt * (int) (Math.log10(x) + 1) - spaceInt), ypos + spaceInt); //On décale pour chaque nouveau chiffre dans le nombre saisie
         //------------------------Y-------------
         parent.fill(colorWhite);// la boite prend la teinte blanche
-        parent.rect(xpos + space, ypos, swidth, sheight);//création de la boite carré de 55 de coté
+        //parent.rect(xpos + space, ypos, swidth, sheight);//création de la boite carré de 55 de coté
         parent.textSize(20);//Taille du texte
         parent.fill(colorWhite);//Couleur du nom de la boite: blanc
         parent.text("Y", xpos + space - 5, ypos - 40);//Ecriture du nom de la boite au dessus de celle-ci
-        parent.fill(colorBlack);//couleur noir de la variable récupérer
+        //parent.fill(colorBlack);//couleur noir de la variable récupérer
         parent.text(y, xpos + space - (spaceInt * (int) (Math.log10(y) + 1) - spaceInt), ypos + spaceInt); //On décale pour chaque nouveau chiffre dans le nombre saisie
     }
 

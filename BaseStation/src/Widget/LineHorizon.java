@@ -2,6 +2,8 @@ package Widget;
 
 import processing.core.PApplet;
 
+import java.awt.*;
+
 /**
  * @author processor65
  * https://forum.processing.org/one/topic/artificial-horizon-compass-18-4-2013.html
@@ -18,6 +20,13 @@ public class LineHorizon {
 
     private int sizeBrownW = 900;
     private int sizeBrownH = 600;
+    private Color colorBlue = new Color(0,180,255);
+    private Color colorBrown = new Color(95,55,40);
+    private Color colorGreen = new Color(100, 255, 100);
+    private Color colorWhite = new Color(255,255,255);
+    private Color colorBlack = new Color(0,0,0);
+    private Color colorRed = new Color(255,0,0);
+
     private PApplet parent;
 
     public LineHorizon(PApplet p) {
@@ -38,12 +47,14 @@ public class LineHorizon {
         /**
          * Affichage de l'horizon bleu et marron
          */
+        int sizeBr = 400;
+        int sizeBl = -100;
         parent.noStroke();
-        parent.fill(0, 180, 255);
-        parent.rect(0, -100, sizeBlueW, sizeBlueH); //affichage d'un rectangle bleu correspondant au ciel
-        parent.fill(95, 55, 40);
+        parent.fill(colorBlue.getRGB());
+        parent.rect(0, sizeBl, sizeBlueW, sizeBlueH); //affichage d'un rectangle bleu correspondant au ciel
+        parent.fill(colorBrown.getRGB());
         parent.rotate(-roll);//rotation mise en place de la barre marron
-        parent.rect(0, 400 + pitch, sizeBrownW, sizeBrownH); //affichage d'un rectangle marron correspondant à la terre
+        parent.rect(0, sizeBr + pitch, sizeBrownW, sizeBrownH); //affichage d'un rectangle marron correspondant à la terre
         parent.rotate(roll);//remise a zéro de la rotation
 
 
@@ -69,7 +80,7 @@ public class LineHorizon {
         float radians;
         float x1, x2, y1, y2;
         parent.strokeWeight(2 * StrokeWidth); //épaisseur de la graduation
-        parent.stroke(255);//remplissage blanc
+        parent.stroke(colorWhite.getRGB());//remplissage blanc
 
 
         //Calcul de la position de la graduation
@@ -97,15 +108,18 @@ public class LineHorizon {
             y1 = DivCloserPhasorLenght * PApplet.sin(radians);
             y2 = DivDistalPhasorLenght * PApplet.sin(radians);
             if (Division == scaleMax / 2 | Division == 0 | Division == scaleMax) {
-                parent.strokeWeight(15);
-                parent.stroke(0);
+                int sizeW = 15;
+                parent.strokeWeight(sizeW);
+                parent.stroke(colorBlack.getRGB());
                 parent.line(x1, y1, x2, y2);
-                parent.strokeWeight(8);
-                parent.stroke(100, 255, 100);
+                sizeW = 8;
+                parent.strokeWeight(sizeW);
+                parent.stroke(colorGreen.getRGB());
                 parent.line(x1, y1, x2, y2);
             } else {
-                parent.strokeWeight(3);
-                parent.stroke(255);
+                int sizeW = 3;
+                parent.strokeWeight(sizeW);
+                parent.stroke(colorWhite.getRGB());
                 parent.line(x1, y1, x2, y2);
             }
         }
@@ -115,12 +129,12 @@ public class LineHorizon {
         /**
          * Affichage des flèches rouges de l'axe
          */
-        parent.stroke(255, 0, 0); //remplissage rouge
+        parent.stroke(colorRed.getRGB()); //remplissage rouge
         parent.strokeWeight(3);//épaisseur des ligens
         parent.line(-115, 0, 115, 0);//affichage de flèches horizontal
         parent.line(0, 280, 0, -280);//affichage de flèches vertical
 
-        parent.fill(100, 255, 100);//remplissage vert
+        parent.fill(colorGreen.getRGB());//remplissage vert
         parent.stroke(0);//contour noir
         parent.triangle(0, -285, -10, -255, 10, -255); //affichage de la pointe de la flèche vertical haute
         parent.triangle(0, 285, -10, 255, 10, 255); //affichage de la pointe de la flèche horizontal basse
@@ -129,7 +143,7 @@ public class LineHorizon {
     private void borders() {
         int size = 1100;
         parent.noFill();//pas de remplissage
-        parent.stroke(0);//contour noir
+        parent.stroke(colorBlack.getRGB());//contour noir
         parent.strokeWeight(400);//épaisseur du contour
         parent.rect(0, 0, size, size); //rectangle de contour noir
         parent.strokeWeight(200);//épaisseur du contour
@@ -137,8 +151,8 @@ public class LineHorizon {
     }
 
     private void pitchScale() {
-        parent.stroke(255);//contour blanc
-        parent.fill(255);//remplissage blanc
+        parent.stroke(colorWhite.getRGB());//contour blanc
+        parent.fill(colorWhite.getRGB());//remplissage blanc
         parent.strokeWeight(3);//épaisseur
         parent.textSize(24);//taille du texte
         parent.textAlign(parent.CENTER);//Alignement au centre

@@ -32,7 +32,7 @@ public class Main extends PApplet {
     }
 
     public void settings() {
-        size(displayWidth, displayHeight, P2D);
+        size(1920, 1080, P2D);
     }
 
     public void setup() {
@@ -56,8 +56,8 @@ public class Main extends PApplet {
 
         map.setup(width / 2 + width / 15, -height / 4);
         int space = (int) (height / 3.85);
-        boxData.setup(space, space / 10, width / 2 + width / 9, height / 2 + height / 5, "Data Box");
-        boxOrder.setup(space, height - height / 3, width / 2 + width / 9, height / 4, "Order Box");
+        boxData.setup(space, space / 10, width / 2 + width / 9, height / 2 + height / 5, "Data");
+        boxOrder.setup(space, height - height / 3, width / 2 + width / 9, height / 4, "Send Order");
 
     }
 
