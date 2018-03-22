@@ -71,24 +71,28 @@ public class AcceptClient extends Thread {
                             JSONObject content = obj.getJSONObject("content");
                             System.out.println("content" + content);
                             dbConnexion.insert(content);
+                            Date datePUT = new Date();
+                         	SimpleDateFormat shortDatePUT = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                           //Log action de reponse envoyé
-                        	Server.text2INFO_Insered("["+shortDateFormat.format(date).toString()+"], {\"action\":\"PUT\",\"content\":"+content);
+                        	Server.text2INFO_Insered("["+shortDatePUT.format(datePUT).toString()+"], {\"action\":\"PUT\",\"content\":"+content);
                         	
                         } else if (action.equals("GET")) {
                             JSONObject content1 = obj.getJSONObject("content");
                             String response = dbConnexion.Select(content1);
                             System.out.println("****** response   " + response + "********");
-                            
+                            Date dateGET = new Date();
+                         	SimpleDateFormat shortDateGET = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                             //Log action de reponse envoyé
-                        	Server.text2INFO_Send("["+shortDateFormat.format(date).toString()+"], "+response);
+                        	Server.text2INFO_Send("["+shortDateGET.format(dateGET).toString()+"], "+response);
                             out.println(response);
                             out.flush();
                         }
 
                 }else{
-                	
+                	 Date d = new Date();
+                 	SimpleDateFormat shortDateF = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                 	//Log error s'il n'est pas au format JSON
-                	Server.text2EROR("["+shortDateFormat.format(date).toString()+"], "+message+": Les données ne sont pas au format JSON !?");
+                	Server.text2EROR("["+shortDateF.format(d).toString()+"], "+message+": Les données ne sont pas au format JSON !?");
                 	
                 	out.println("Les données ne sont pas au format JSON !?");
                     out.flush();
