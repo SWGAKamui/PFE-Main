@@ -9,6 +9,12 @@ Composition répertoire :
         - Server
         - TestAffichage
         - TestFct
+
+
+Bibliothèque a rajouter:
+    Pour lancer le projet, vous devez importer les dossier lib/Processing et lib/Unfolding
+
+     
 Comment lancer le projet?
     Si vous souhaitez tester uniquement la base:
         - Lancer le Server.java
