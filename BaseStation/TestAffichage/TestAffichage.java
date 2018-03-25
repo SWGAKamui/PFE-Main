@@ -6,9 +6,11 @@ import processing.core.PApplet;
 
 /**
  * Classe écrite par Kinda AL CHAHID
+ * Classe qui permet de tester l'affichage des éléments en les liant avec la souris.
+ * Cette classe est en doublons avec le Main
+ * Une classe View a part aurait été préférable
  */
 public class TestAffichage extends PApplet {
-    static Thread client;
     private static Data dataReceived = new Data();
     private static Data dataOrder = new Data();
     private TestFct testFct = new TestFct(this);
@@ -26,8 +28,6 @@ public class TestAffichage extends PApplet {
 
     public static void main(String[] args) {
         PApplet.main("TestAffichage");
-        client = new Thread(new Client(dataReceived, dataOrder, "GET"));
-        client.start();
     }
 
     public void settings() {

@@ -5,6 +5,7 @@ import processing.core.PVector;
 
 /**
  * Classe écrite par Kinda AL CHAHID
+ * Permet de renvoyer les valeurs de la souris
  */
 public class TestFct {
 

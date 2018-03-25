@@ -7,12 +7,11 @@ import java.io.File;
 
 public class Config {
     /**
-     *
      * @author Kinda AL CHAHID
      * Classe permettant de récupérer les confguration de base:
-     *          Le lien vers le dossier de test des fichier JSON
-     *          L'ip du serveur
-     *          Le port du serveur
+     * Le lien vers le dossier de test des fichier JSON
+     * L'ip du serveur
+     * Le port du serveur
      */
     private final JSONObject object;
 

@@ -7,15 +7,11 @@ import java.awt.*;
 import static processing.core.PApplet.map;
 
 /**
- *
  * @author Guru
  * Licence: aucune
  * url : http://www.local-guru.net/processing/gauges/
- *
  * Modifié par Kinda AL CHAHID
- *
  * Code initialement écrit pour l'IDE Processing en pseudo JAVA
- *
  * Adapté pour du JAVA traditionnelle et pour fonctionner avec les autres widgets et avec le moins de valeur empirique possible
  */
 public class Gauge {

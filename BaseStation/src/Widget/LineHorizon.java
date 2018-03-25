@@ -9,6 +9,9 @@ import java.awt.*;
  * https://forum.processing.org/one/topic/artificial-horizon-compass-18-4-2013.html
  * Licence : aucune
  * Modifié par Kinda AL CHAHID
+ * Code initialement fait pour l'IDE de processing
+ * Provoquait un zoom sur l'ensemble des éléments de la fenetre et rempli de magic number
+ * Un travail d'adaptation a été fait
  */
 public class LineHorizon {
     private float pitch, roll, yaw; //donnée yaw, pitch, roll récupérer par le drone
@@ -20,12 +23,12 @@ public class LineHorizon {
 
     private int sizeBrownW = 900;
     private int sizeBrownH = 600;
-    private Color colorBlue = new Color(0,180,255);
-    private Color colorBrown = new Color(95,55,40);
+    private Color colorBlue = new Color(0, 180, 255);
+    private Color colorBrown = new Color(95, 55, 40);
     private Color colorGreen = new Color(100, 255, 100);
-    private Color colorWhite = new Color(255,255,255);
-    private Color colorBlack = new Color(0,0,0);
-    private Color colorRed = new Color(255,0,0);
+    private Color colorWhite = new Color(255, 255, 255);
+    private Color colorBlack = new Color(0, 0, 0);
+    private Color colorRed = new Color(255, 0, 0);
 
     private PApplet parent;
 

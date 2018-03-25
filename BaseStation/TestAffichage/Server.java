@@ -10,7 +10,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Classe écrite par Kinda AL CHAHID
+ * @author Kinda AL CHAHID
+ * Serveur qui permet de tester le client.
+ * Renvoie tous ordres (comme un miroire)
  */
 public class Server implements DataPath {
     private static ParseJsonFormat jsonFormat = new ParseJsonFormat();

@@ -5,11 +5,10 @@ import processing.core.PApplet;
 import java.awt.*;
 
 /**
- *
  * @author Processing
  * Le code original est une tutoriel:
  * url : https://processing.org/examples/scrollbar.html
- *
+ * Licence LGPL
  * Modifié et adapté par Kinda AL CHAHID
  */
 public class ScrollBarProcessing {

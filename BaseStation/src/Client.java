@@ -11,6 +11,7 @@ import java.net.Socket;
 
 /**
  * Classe écrite par Kinda AL CHAHID
+ * réceptionne et envoie les données au drone
  */
 public class Client implements Runnable, DataPath {
     private static ParseJsonFormat jsonFormat = new ParseJsonFormat();

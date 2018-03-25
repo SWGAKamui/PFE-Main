@@ -4,12 +4,25 @@ Composition répertoire :
         - DataCollect
         - Widget
             - EditText
-
+    - TestAffichage
+        - jsonData
+        - Server
+        - TestAffichage
+        - TestFct
 Comment lancer le projet?
     Si vous souhaitez tester uniquement la base:
         - Lancer le Server.java
         - Lancer Main.java
+        Si vous lancer uniquement le Main.java, le client va tenter de ce connecter a un serveur inexistant.
+        Pour sélectionner l'ip du serveur et son port -> src/Config/config.Json
 
-        TestAffichage remplace Main.java pour tester uniquement l'affichage
 
-    Si vous souhaitez changer des paramètres, le fichier src/Config/Config.json conserve les paramètres modifiables.
+    TestAffichage remplace Main.java pour tester uniquement l'affichage avec un mouvement de souris pour simuler le comportement du client
+
+
+
+Fonctionnement
+    - La boite du bas sert de zone de données à envoyer aux drones. L'utilisateur peut intéragir avec chaque éléments.
+    - La boite de donnée correspond aux données renvoyés par le serveur (drone)
+    - Il est possible de zoomer et de dézoomer la carte. Ne correspond à aucune donnée. Ne sert que pour montrer les possibilités de l'élément
+

@@ -10,11 +10,9 @@ import java.io.File;
  */
 public class ParseJsonFormat {
     /**
-     *@author Kinda AL CHAHID
-     * @param filename
      * @return donnée
-     *
      * Classe qui prend un fichier et/ou une variable JSON et la transforme en entier
+     * @author Kinda AL CHAHID
      */
 
     public JSONObject getStringJson(String filename) {
@@ -53,7 +51,7 @@ public class ParseJsonFormat {
 
     public int getAlt(JSONObject object) {
         /**
-        * Retourne la valeur de l'altitude en entier
+         * Retourne la valeur de l'altitude en entier
          **/
         return object.getJSONObject("content").getInt("value");
     }

@@ -44,7 +44,8 @@ public class Data implements DataPath {
     public String getJsonDataAlt() {
         return getAltJsonBegin + altitude + getAltJsonEnd;
     }
+
     public String getJsonDataCoord() {
-        return getCoordJsonBegin + coord[0] + getCoordJsonY+coord[1]+getCoordJsonEnd;
+        return getCoordJsonBegin + coord[0] + getCoordJsonY + coord[1] + getCoordJsonEnd;
     }
 }

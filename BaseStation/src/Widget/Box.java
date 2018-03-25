@@ -28,7 +28,6 @@ public class Box {
     }
 
     public void draw() {
-
         parent.noFill();//pas de remplissage de la boite, elle doit rester transparente
         parent.stroke(colorWhite.getRGB());//bord en blanc
         parent.rect(x, y, swidth, sheight); //position et taille de la boite

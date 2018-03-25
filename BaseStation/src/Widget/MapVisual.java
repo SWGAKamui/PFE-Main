@@ -10,11 +10,16 @@ import java.awt.*;
 
 /**
  * @author Till Nagel
- *
  * Tutoriel pour l'utilisation de la bibliothèque Unfolding map
  * url : http://unfoldingmaps.org/tutorials/markers-simple
  * Licence : MIT
- * Classe écrite par Kinda AL CHAHID
+ * Modifié par Kinda AL CHAHID
+ *
+ *
+ * Fonctionnement
+ *      - La boite du bas sert de zone de données à envoyer aux drones. L'utilisateur peut intéragir avec chaque éléments.
+ *      - La boite de donnée correspond aux données renvoyés par le serveur (drone)
+ *      - Il est possible de zoomer et de dézoomer la carte. Ne correspond à aucune donnée. Ne sert que pour montrer les possibilités de l'élément
  */
 public class MapVisual {
     private UnfoldingMap map;
