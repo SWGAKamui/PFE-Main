@@ -1,3 +1,7 @@
+/**
+ * Created by alexandrebrouste on 02/03/2018.
+ */
+
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 #include "Wire.h"
@@ -31,15 +35,9 @@ void setup() {
     while (!Serial);
 
     // initialize device
-    Serial.println(F("Initializing I2C devices..."));
     mpu.initialize();
 
-    // verify connection
-    Serial.println(F("Testing device connections..."));
-    Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
-
     // load and configure the DMP
-    Serial.println(F("Initializing DMP..."));
     mpu.dmpInitialize();
 
     // gyro/accelero offsets
@@ -49,7 +47,6 @@ void setup() {
     mpu.setZAccelOffset(1788);
 
     // turn on the DMP, now that it's ready
-    Serial.println(F("Enabling DMP..."));
     mpu.setDMPEnabled(true);
 
     // get expected DMP packet size for later comparison
