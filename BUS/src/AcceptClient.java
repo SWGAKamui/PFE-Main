@@ -72,9 +72,10 @@ public class AcceptClient extends Thread {
                             System.out.println("content" + content);
                             dbConnexion.insert(content);
                             Date datePUT = new Date();
-                         	SimpleDateFormat shortDatePUT = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
+                            SimpleDateFormat shortDatePUT = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                           //Log action de reponse envoyé
                         	IHM_BUS.setText2INFO_Insered("["+shortDatePUT.format(datePUT).toString()+"], {\"action\":\"PUT\",\"content\":"+content);
+                        	sleep(500);
                         	
                         } else if (action.equals("GET")) {
                             JSONObject content1 = obj.getJSONObject("content");
@@ -84,7 +85,8 @@ public class AcceptClient extends Thread {
                          	SimpleDateFormat shortDateGET = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                             //Log action de reponse envoyé
                         	IHM_BUS.setText2INFO_Send("["+shortDateGET.format(dateGET).toString()+"], "+response);
-                            out.println(response);
+                        	sleep(500);
+                        	out.println(response);
                             out.flush();
                         }
 
@@ -93,7 +95,7 @@ public class AcceptClient extends Thread {
                  	SimpleDateFormat shortDateF = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
                 	//Log error s'il n'est pas au format JSON
                 	IHM_BUS.setText2EROR("["+shortDateF.format(d).toString()+"], "+message+": Les données ne sont pas au format JSON !?");
-                	
+                 	sleep(500);
                 	out.println("Les données ne sont pas au format JSON !?");
                     out.flush();
                 }
@@ -110,7 +112,10 @@ public class AcceptClient extends Thread {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 
     }

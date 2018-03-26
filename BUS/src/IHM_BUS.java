@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -87,7 +88,7 @@ public class IHM_BUS {
         JLabel lblNewLabel_1 = new JLabel("SUCCÈS \"PUT\"");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
         lblNewLabel_1.setForeground(Color.BLUE);
-        lblNewLabel_1.setBounds(41, 69, 86, 14);
+        lblNewLabel_1.setBounds(41, 69, 129, 14);
         panel_2.add(lblNewLabel_1);
         
         lblNewLabel_2 = new JLabel("SUCCÈS \"GET\" \"INFO\"");
@@ -96,8 +97,8 @@ public class IHM_BUS {
         lblNewLabel_2.setBounds(41, 87, 145, 14);
         panel_2.add(lblNewLabel_2);
         
-        lblApiBus = new JLabel("BUS APP\u2502V1.0\u2502\u00A9 2018 \u2502Imane ZEROUALI & Ali  ZAMOUCHE \u2502Univ Bordeaux.  ");
-        lblApiBus.setBounds(526, 403, 575, 14);
+        lblApiBus = new JLabel("BUS APP\u2502V1.0\u2502\u00A9 2018 \u2502Imane ZEROUALI & Ali  ZAMOUCHE \u2502Univ Bordeaux.");
+        lblApiBus.setBounds(449, 410, 522, 14);
         
         container.add(lblApiBus);
         Fentre.setVisible(true);
