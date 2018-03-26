@@ -27,7 +27,7 @@ public class Server {
         int port = 2000;
         serverSocket = new ServerSocket(port);
         Date date = new Date();
-    	SimpleDateFormat shortDateFormat = new SimpleDateFormat("'le' dd/MM/yyyy 'à' hh:mm:ss:SS");
+    	SimpleDateFormat shortDateFormat = new SimpleDateFormat("'le' dd/MM/yyyy '-' hh:mm:ss:SS");
     	IHM_BUS.setText2TRACE("["+shortDateFormat.format(date).toString()+"], Le server est en ecoute sur le port 2000");
         System.out.println("Le server est en ecoute sur le port 2000");
 
@@ -52,13 +52,14 @@ public class Server {
                 }
             }
 
-            IHM_BUS.setText1COMPOSANTS(login + " est connecté");
+            IHM_BUS.setText1COMPOSANTS(login + " est connect\u00E9");
+            Log.Ecriture(login + " est connect\u00E9");
             System.out.println("message " + login);
 
             //Creation d'un nouveau client
             for (int i = 0; i < AClient.length; i++) {
                 if (AClient[i] == null) {
-                    (AClient[i] = new AcceptClient(socket, AClient)).start();
+                    (AClient[i] = new AcceptClient(socket, AClient, login)).start();
 
                     break;
                 }

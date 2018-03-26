@@ -60,12 +60,13 @@ public class Client implements Runnable {
             sc = new BufferedReader(new InputStreamReader(System.in));
             out = new PrintStream(clientSocket.getOutputStream());
             in = new DataInputStream(clientSocket.getInputStream());
-
+            out.println("AP");out.flush();
+            out.println("AP");out.flush();
 
         } catch (UnknownHostException e) {
-            System.err.println("Hôte "+host+" inconnue " );
+            System.err.println("Hï¿½te "+host+" inconnue " );
         } catch (IOException e) {
-            System.err.println("Impossible d'obtenir des E / S pour la connexion à  l'hôte: "+ host);
+            System.err.println("Impossible d'obtenir des E / S pour la connexion ï¿½ l'hï¿½te: "+ host);
         }
 
 
@@ -77,17 +78,9 @@ public class Client implements Runnable {
                button.addActionListener(new ActionListener() {
                    @Override
                    public void actionPerformed(ActionEvent e) {
-                       out.println(text2.getText().replaceAll("[\r\n]+", ""));
-                       /*String text="{\n" +
-                               "  \"action\": \"GET\",\n" +
-                               "  \"content\": {\n" +
-                               "    \"type\": \"altitude\"\n" +
-                               "  }\n" +
-                               "}";
-                               //text2.getText();
-                       System.out.println(text);
-                       text1.setText(text);*/
-                       text2.setText("");
+                       String text1="{\"action\":\"Ptent\": {\"type\": \"altitude\", \"value\": \"50\"}}";
+                       out.println(text1.replaceAll("[\r\n]+", ""));
+                       out.flush();
 
                    }
 

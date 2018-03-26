@@ -8,10 +8,9 @@ import java.sql.*;
  */
 
 public class dbConnexion {
-    static String url="jdbc:mysql://dbserver/DataBase";
-    static String root="root";
-    static String pw="";
-
+    static String url="jdbc:mysql://dbserver/azamouche";
+    static String root="azamouche";
+    static String pw="ali";
     static Connection connect= null;
 
     //Creation d'un statement pour l'execution des requettes
@@ -31,7 +30,7 @@ public class dbConnexion {
         return null;
     }
 
-    //Connexion à la base
+    //Connexion ï¿½ la base
     public static Connection connecte() throws ClassNotFoundException, SQLException {
 
             Class.forName("com.mysql.jdbc.Driver");
@@ -40,16 +39,18 @@ public class dbConnexion {
         return connect;
     }
 
-    //Insersion des donnees reçues
+    //Insersion des donnees reï¿½ues
     public static void insert(JSONObject content) throws JSONException, SQLException, ClassNotFoundException {
         String type= content.getString("type");
         String value= content.getString("value");
+        long time=System.currentTimeMillis();
 
         Connection conn= connecte();
-        String sql="INSERT INTO Data (type, value)VALUES(?,?)";
+        String sql="INSERT INTO Data (type, value, time)VALUES(?,?,?)";
         PreparedStatement pstate= conn.prepareStatement(sql);
         pstate.setString(1, type);
         pstate.setString(2, value);
+        pstate.setString(3, String.valueOf(time));
 
         pstate.executeUpdate();
         pstate.close();

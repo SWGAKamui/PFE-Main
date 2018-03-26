@@ -1,14 +1,4 @@
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.io.IOException;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -16,6 +6,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
+import java.awt.*;
 
 /**
  *@authors ZAMOUCHE & ZEROUALI
@@ -85,13 +76,13 @@ public class IHM_BUS {
         lblNewLabel.setBounds(41, 30, 46, 14);
         panel_2.add(lblNewLabel);
         
-        JLabel lblNewLabel_1 = new JLabel("SUCCÈS \"PUT\"");
+        JLabel lblNewLabel_1 = new JLabel("SUCCES \"PUT\"");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 12));
         lblNewLabel_1.setForeground(Color.BLUE);
         lblNewLabel_1.setBounds(41, 69, 129, 14);
         panel_2.add(lblNewLabel_1);
         
-        lblNewLabel_2 = new JLabel("SUCCÈS \"GET\" \"INFO\"");
+        lblNewLabel_2 = new JLabel("SUCCES \"GET\" \"INFO\"");
         lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 12));
         lblNewLabel_2.setForeground(new Color(34, 139, 34));
         lblNewLabel_2.setBounds(41, 87, 145, 14);
