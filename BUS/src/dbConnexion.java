@@ -8,7 +8,7 @@ import java.sql.*;
  */
 
 public class dbConnexion {
-    static String url="jdbc:mysql://localhost/data";
+    static String url="jdbc:mysql://dbserver/DataBase";
     static String root="root";
     static String pw="";
 
